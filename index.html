@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shanghai Autumn Trip · 2–8 Dec 2026</title>
+<meta name="theme-color" content="#B2502B">
+<style>
+  :root {
+    --bg: #FBF4EC; --card: #FFFFFF; --line: #F0E3D1; --ink: #3A2817;
+    --ink2: #5C4530; --mute: #8A6B54; --mute2: #A3755A; --faint: #BFA287;
+    --brand: #B2502B; --brand-soft: #FBEADC; --gold: #F0C78A;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: 'Noto Sans Thai', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  .wrap { width: 100%; max-width: 480px; margin: 0 auto; background: var(--bg); min-height: 100vh; padding-bottom: 56px; position: relative; overflow-x: hidden; }
+  h1, h2, h3 { margin: 0; }
+  .serif { font-family: Georgia, 'Noto Serif Thai', serif; }
+  .sec { padding: 28px 20px 0; }
+  .sec-h { font-size: 20px; font-weight: 800; color: var(--ink); }
+  .sec-p { margin: 4px 0 14px; font-size: 13px; color: var(--mute2); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 6px 18px rgba(86,52,27,0.08); }
+  .pill, .carousel { scrollbar-width: none; -ms-overflow-style: none; }
+  .pill::-webkit-scrollbar, .carousel::-webkit-scrollbar, .vscroll::-webkit-scrollbar { display: none; }
+  .pill { display: flex; gap: 9px; overflow-x: auto; padding: 0 20px 12px; }
+  .tab { flex: 0 0 auto; padding: 9px 16px; border-radius: 999px; border: 1px solid #E0CBAE; background: #fff; color: #6B4A33; font: 700 13px inherit; font-family: inherit; cursor: pointer; }
+  .tab.on { background: var(--brand); color: #fff; border-color: transparent; }
+  .carbox { position: relative; width: 100%; }
+  .carousel { display: flex; overflow-x: auto; width: 100%; scroll-snap-type: x mandatory; }
+  .carousel > div { flex: 0 0 100%; width: 100%; scroll-snap-align: start; }
+  .carousel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .nav { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 999px; border: none;
+         background: rgba(255,255,255,0.7); color: #3A2817; font-size: 18px; line-height: 1; cursor: pointer; opacity: .5; transition: opacity .15s; display: flex; align-items: center; justify-content: center; }
+  .nav:hover { opacity: .95; }
+  .nav.l { left: 8px; } .nav.r { right: 8px; }
+  .badge { background: rgba(30,16,9,0.7); color: #F5E3C8; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 999px; }
+  .badges { position: absolute; left: 12px; top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .count { position: absolute; right: 12px; top: 12px; background: rgba(30,16,9,0.55); color: #F5E3C8; font-size: 10.5px; font-weight: 700; padding: 4px 9px; border-radius: 999px; }
+  .rate { position: absolute; right: 12px; top: 12px; background: rgba(30,16,9,0.6); color: #FFD9A0; font-size: 10.5px; font-weight: 700; padding: 4px 9px; border-radius: 999px; }
+  .head { width: 100%; text-align: left; background: none; border: none; padding: 14px 16px 16px; cursor: pointer; font-family: inherit; }
+  .title { font-size: 16.5px; font-weight: 700; color: var(--ink); }
+  .tag { font-size: 11px; font-weight: 700; color: var(--brand); background: var(--brand-soft); padding: 3px 9px; border-radius: 999px; }
+  .chev { font-size: 18px; color: #C98B5E; transition: transform .15s; }
+  .desc { margin: 8px 0 0; font-size: 13px; color: var(--mute); line-height: 1.6; }
+  .loc { font-size: 11.5px; color: var(--mute2); margin-top: 3px; }
+  .chip { font-size: 11px; color: #6B4A33; background: var(--bg); border: 1px solid #ECDFCB; padding: 5px 10px; border-radius: 999px; }
+  .chip2 { font-size: 10.5px; color: #6B4A33; background: var(--brand-soft); padding: 4px 9px; border-radius: 999px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .modal { position: fixed; inset: 0; background: rgba(24,13,7,.9); z-index: 90; display: none; flex-direction: column; padding: 16px; }
+  .modal.on { display: flex; }
+  .vscroll { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+  .vscroll img { width: 100%; border-radius: 12px; display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1A120C; --card: #241811; --line: #3A281B; --ink: #F5E7D6; --ink2: #E2CDB6;
+      --mute: #C3A98F; --mute2: #A98A6B; --faint: #8A7159; --brand: #E0824F; --brand-soft: #3A2317;
+    }
+    :root:not([data-theme="light"]) .tab { background: #241811; color: #E2CDB6; border-color: #3A281B; }
+    :root:not([data-theme="light"]) .nav { background: rgba(36,24,17,.8); color: #F5E7D6; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- HERO -->
+  <div style="position:relative;width:100%;height:400px;overflow:hidden;">
+    <img src="images/hero.jpg" alt="Shanghai" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,32,20,.15) 0%,rgba(42,22,14,.35) 55%,rgba(30,15,9,.92) 100%);"></div>
+    <div style="position:absolute;left:24px;right:24px;bottom:26px;">
+      <div style="color:var(--gold);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;">Travel Guide</div>
+      <h1 class="serif" style="color:#fff;font-size:33px;font-weight:800;line-height:1.14;margin-top:6px;">Shanghai<br>Autumn Trip</h1>
+      <p style="margin:8px 0 0;color:#F3E3D2;font-size:14px;font-weight:500;">2 – 8 Dec 2026 · 7D6N · Mm &amp; Pajaryy</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2 class="sec-h serif">Overview</h2>
+    <p class="sec-p">ภาพรวมไฮไลต์ของทริป</p>
+    <div class="carousel" style="gap:12px;margin:0 -20px;padding:0 20px 4px;scroll-snap-type:none;">
+      <div id="hl" style="display:flex;gap:12px;flex:0 0 auto;"></div>
+    </div>
+    <div class="card" style="margin-top:16px;" id="ovDays"></div>
+  </div>
+
+  <div class="sec">
+    <h2 class="sec-h serif">Member</h2>
+    <div style="display:flex;gap:12px;margin-top:12px;">
+      <div class="card" style="flex:1;padding:14px;text-align:center;">
+        <div style="width:66px;height:66px;border-radius:999px;overflow:hidden;margin:0 auto 8px;border:2px solid #F3D9B8;"><img src="images/member_1.jpg" alt="Mm" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="font-size:14px;font-weight:700;">Mm</div>
+        <div style="font-size:11px;color:var(--mute2);margin-top:2px;">Narupong Jarasbunpaisarn</div>
+      </div>
+      <div class="card" style="flex:1;padding:14px;text-align:center;">
+        <div style="width:66px;height:66px;border-radius:999px;overflow:hidden;margin:0 auto 8px;border:2px solid #E9C9BC;"><img src="images/member_2.jpg" alt="Pajaryy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="font-size:14px;font-weight:700;">Pajaryy</div>
+        <div style="font-size:11px;color:var(--mute2);margin-top:2px;">Pajaree Suprapan</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2 class="sec-h serif">Flight Detail</h2>
+    <div class="card" style="margin-top:12px;">
+      <div id="flightCar"></div>
+      <div style="padding:14px 16px 16px;">
+        <div class="row">
+          <span class="tag">China Eastern Airlines</span>
+          <span style="font-size:11px;color:var(--faint);font-weight:600;">MU8644 / MU8643</span>
+        </div>
+        <div style="margin-top:14px;">
+          <div style="font-size:11px;color:var(--mute2);font-weight:600;">ขาไป · 2 Dec 2026</div>
+          <div style="font-size:15px;font-weight:800;margin-top:2px;">BKK 16:50 → PVG 22:10</div>
+        </div>
+        <div style="height:1px;background:var(--line);margin:12px 0;"></div>
+        <div>
+          <div style="font-size:11px;color:var(--mute2);font-weight:600;">ขากลับ · 8 Dec 2026</div>
+          <div style="font-size:15px;font-weight:800;margin-top:2px;">PVG 12:00 → BKK 15:55</div>
+        </div>
+        <div style="height:1px;background:var(--line);margin:12px 0;"></div>
+        <div style="font-size:11px;color:var(--mute2);font-weight:700;margin-bottom:6px;">สัมภาระ</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="chip">Checked Bag: 1×23 kg</span>
+          <span class="chip">Carry-on: 1×8 kg (55×40×20 cm)</span>
+          <span class="chip">Personal Item: 1 pc (35×32×18 cm)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2 class="sec-h serif">Hotel</h2>
+    <button class="card" id="hotelCard" style="display:block;width:100%;text-align:left;padding:0;margin-top:12px;cursor:pointer;font-family:inherit;">
+      <div style="position:relative;">
+        <img src="images/hotel_1.jpg" alt="Jinjiang Inn" style="width:100%;height:155px;object-fit:cover;display:block;">
+        <span class="badge" style="position:absolute;right:12px;bottom:12px;">ดูรูปทั้งหมด 8 รูป</span>
+      </div>
+      <div style="padding:14px 16px 16px;">
+        <h3 style="font-size:15.5px;font-weight:700;">Jinjiang Inn (Shanghai People's Square East Huaihai Road)</h3>
+        <p style="margin:2px 0 0;font-size:11.5px;color:var(--mute2);">锦江之星(上海人民广场淮海东路店)</p>
+        <p style="margin:8px 0 10px;font-size:12px;color:var(--mute);line-height:1.5;">No. 293 Yunnan South Road, Huangpu District, Shanghai, 200021, China<br>上海黄浦区云南南路293号</p>
+        <div style="display:flex;gap:10px;margin-bottom:10px;">
+          <div style="flex:1;background:var(--bg);border-radius:10px;padding:8px 10px;">
+            <div style="font-size:10px;color:var(--mute2);font-weight:700;">CHECK-IN</div>
+            <div style="font-size:12.5px;font-weight:700;">2 Dec 2026 · หลัง 14:00</div>
+          </div>
+          <div style="flex:1;background:var(--bg);border-radius:10px;padding:8px 10px;">
+            <div style="font-size:10px;color:var(--mute2);font-weight:700;">CHECK-OUT</div>
+            <div style="font-size:12.5px;font-weight:700;">8 Dec 2026 · ก่อน 12:00</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="chip2">Luggage storage</span><span class="chip2">Wi-Fi in public areas</span><span class="chip2">Taxi booking service</span>
+          <span class="chip2">Fitness room</span><span class="chip2">No smoking in public areas</span><span class="chip2">Guest Laundry</span><span class="chip2">Breakfast for 1 guest</span>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <div style="padding:30px 0 0;">
+    <div style="padding:0 20px;">
+      <h2 class="sec-h serif">รายละเอียดแต่ละวัน</h2>
+      <p class="sec-p">แตะเลือกวัน · แตะการ์ดเพื่อดูรายละเอียด · ปัดรูปหรือกดลูกศรซ้าย–ขวา</p>
+    </div>
+    <div class="pill" id="dayTabs"></div>
+    <div style="padding:0 20px 14px;"><span style="display:inline-block;font-size:12px;font-weight:800;color:var(--brand);background:var(--brand-soft);border:1px solid #F3D9B8;padding:6px 12px;border-radius:999px;" id="dayDate"></span></div>
+    <div id="dayBody"></div>
+  </div>
+
+  <div style="margin-top:34px;">
+    <div style="padding:0 20px;">
+      <h2 class="sec-h serif">ร้านอาหารแนะนำ</h2>
+      <p class="sec-p" id="rstNote"></p>
+    </div>
+    <div class="pill" id="rstTabs"></div>
+    <div class="stack" style="padding:0 20px;" id="rstBody"></div>
+  </div>
+
+  <div style="margin-top:34px;">
+    <div style="padding:0 20px;">
+      <h2 class="sec-h serif">Spare Location</h2>
+      <p class="sec-p">ที่เที่ยวสำรอง 6 แห่ง เผื่อเวลาเหลือ</p>
+    </div>
+    <div class="stack" style="padding:0 20px;" id="spBody"></div>
+  </div>
+
+  <div style="margin-top:40px;padding:20px;text-align:center;">
+    <p style="margin:0;font-size:12px;color:var(--faint);">Shanghai Autumn Trip · 2 – 8 Dec 2026 · Mm &amp; Pajaryy</p>
+  </div>
+</div>
+
+<div class="modal" id="hotelModal">
+  <div class="row" style="margin-bottom:12px;">
+    <div>
+      <div style="color:#F5E3C8;font-size:14px;font-weight:800;">Jinjiang Inn</div>
+      <div style="font-size:11px;color:#BFA287;">รูปทั้งหมด 8 รูป · เลื่อนลงดูต่อ</div>
+    </div>
+    <button id="hotelClose" style="width:34px;height:34px;border-radius:999px;border:none;background:rgba(255,255,255,.2);color:#fff;font-size:16px;cursor:pointer;">✕</button>
+  </div>
+  <div class="vscroll" id="hotelPhotos"></div>
+</div>
+
+<script>
+(function () {
+  var IMG = function (n) { return 'images/' + n + '.jpg'; };
+  var list = function (base, from, to) { var a = []; for (var i = from; i <= to; i++) a.push(IMG(base + '_' + i)); return a; };
+
+  var HOTEL = list('hotel', 1, 8);
+  var FLIGHT = list('flight', 1, 3);
+  var NANJING = list('nanjing', 1, 4);
+  var XINTIANDI = list('xintiandi', 1, 4);
+  var YUYUAN = list('yuyuan', 1, 4);
+
+  var HIGHLIGHTS = [
+    { name: 'The Bund Viewpoint', img: IMG('bundview_1') },
+    { name: 'Mingzhu Roundabout', img: IMG('mingzhu_1') },
+    { name: 'West Lake, Hangzhou', img: IMG('brokenbridge_2') },
+    { name: 'Shanghai Disneyland', img: IMG('dl_banner_1') }
+  ];
+
+  var DAYS = [
+    { id: 'day1', label: 'Day 1', date: '2 Dec 2026' },
+    { id: 'day2', label: 'Day 2', date: '3 Dec 2026' },
+    { id: 'day3', label: 'Day 3', date: '4 Dec 2026' },
+    { id: 'day4', label: 'Day 4', date: '5 Dec 2026' },
+    { id: 'day5', label: 'Day 5', date: '6 Dec 2026' },
+    { id: 'day6', label: 'Day 6', date: '7 Dec 2026' },
+    { id: 'day7', label: 'Day 7', date: '8 Dec 2026' }
+  ];
+
+  var OVERVIEW = [
+    ['Day 1', '2 Dec 2026', 'เดินทางถึงเซี่ยงไฮ้ เช็คอิน Jinjiang Inn'],
+    ['Day 2', '3 Dec 2026', 'North Bund Green Land · Space and Time Cube+ · Waibaidu Bridge · Nanjing Road · Bund Sightseeing Tunnel · Mingzhu Roundabout · Lujiazui · The Bund Viewpoint & Rock Bund'],
+    ['Day 3', '4 Dec 2026', 'Shanghai Disneyland — เครื่องเล่น Tier 1–4'],
+    ['Day 4', '5 Dec 2026', "Jing'an Temple · Jing'an Sculpture Park · West Nanjing Road · 1000Trees · Yanzhong Square Park · Nanjing Road · Christkindlmarkt"],
+    ['Day 5', '6 Dec 2026', 'Hangzhou: West Lake, Broken Bridge, Leifeng Pagoda, Hangzhou Tower, City Balcony ฯลฯ'],
+    ['Day 6', '7 Dec 2026', 'Wukang Mansion · YONEX Wan Ti Hui · Anfu Road · Wiggles wiggles · Xintiandi · YONEX Huaihai · Yuyuan Garden'],
+    ['Day 7', '8 Dec 2026', 'เช็คเอาท์ เดินทางกลับกรุงเทพฯ']
+  ];
+
+  var PLACES = {
+    day2: [
+      { id: 'd2a', time: '09:40 – 10:30', title: 'North Bund Green Land', tag: 'Photo', desc: 'ถ่ายรูป ชมวิวริมแม่น้ำหวงผู่แบบฟินๆ (เดินเข้าสวนจาก International Passenger Terminal ทางออก 3)', images: list('nbgl', 1, 4) },
+      { id: 'd2b', time: '10:30 – 13:00', title: 'Space and Time Cube+', tag: 'Photo · Playing', desc: 'ถ่ายรูปไฟที่ Space and Time Cube+ ชั้น LG1 ตึก Sinar Mas Plaza', images: list('cube', 1, 4) },
+      { id: 'd2c', time: '13:00 – 13:20', title: 'Waibaidu Bridge', tag: 'Photo', desc: 'เดินชมวิว + ถ่ายรูปสะพานเหล็กเก่าแก่ข้ามแม่น้ำซูโจว ก่อนเดินต่อไปถนนนานกิง', images: list('waibaidu', 1, 3) },
+      { id: 'd2d', time: '13:20 – 15:00', title: 'Nanjing Road', tag: 'Photo · Lunch', desc: 'เดินชมวิวเรื่อยๆ จนถึงถนนนานกิง แล้วทานมื้อเที่ยงช่วง 14:00 – 15:00', images: NANJING },
+      { id: 'd2e', time: '15:00 – 15:10', title: 'The Bund Sightseeing Tunnel', tag: 'Transport · Photo', desc: 'นั่งรถไฟลอดอุโมงค์ข้ามแม่น้ำ ชมแสงสีระหว่างทาง เพื่อข้ามไปฝั่งหอไข่มุก', images: list('tunnel', 1, 4) },
+      { id: 'd2f', time: '15:10 – 19:00', title: 'Mingzhu Roundabout', tag: 'Photo · Shopping', desc: 'เดินเที่ยวและช้อปปิ้งรอบๆ หอไข่มุก วงเวียนลอยฟ้าจุดถ่ายรูปยอดนิยม', images: list('mingzhu', 1, 4) },
+      { id: 'd2g', time: '19:00 – 20:00', title: 'Lujiazui', tag: 'Photo', desc: 'เดินเล่นถ่ายรูปวิวตึกสูง และถ่ายรูปที่บันไดเลื่อนวงแหวน Lujiazui', images: list('lujiazui', 1, 3) },
+      { id: 'd2h', time: '21:30 – 22:30', title: 'The Bund Viewpoint & Rock Bund', tag: 'Photo · Night', desc: 'ถ่ายรูปชมบรรยากาศยามค่ำคืนที่ The Bund (ทานมื้อเย็นที่ Nanjing Road 20:20 – 21:20 ก่อนเดินมา) แล้วเดินกลับที่พัก 22:30', images: list('bundview', 1, 4) }
+    ],
+    day4: [
+      { id: 'd4a', time: '09:40 – 11:00', title: "Jing'an Temple", tag: 'Temple', desc: 'วัดพุทธเก่าแก่กลางเมือง สถาปัตยกรรมทองอร่ามสวยงาม (ลงรถไฟ Line 12 ทางออก 2)', images: list('jingan_temple', 1, 4) },
+      { id: 'd4b', time: '11:25 – 13:00', title: "Jing'an Sculpture Park", tag: 'Park · Photo', desc: 'สวนสาธารณะกลางเมือง มีงานประติมากรรมให้เดินชมถ่ายรูป', images: list('jingan_sculpture', 1, 4) },
+      { id: 'd4c', time: '13:15 – 14:30', title: 'West Nanjing Road', tag: 'Eating · Photo', desc: 'ถนนช้อปปิ้งสายหลัก เต็มไปด้วยห้างและร้านแบรนด์เนม แวะทานมื้อกลางวัน', images: list('west_nanjing', 1, 4) },
+      { id: 'd4d', time: '14:40 – 16:40', title: '1000Trees', tag: 'Landmark · Photo', desc: 'แลนด์มาร์คสถาปัตยกรรมต้นไม้พันต้น จุดถ่ายรูปสุดฮิต (Line 13 ลง Jiangning Road ทางออก 1)', images: list('trees1000', 1, 4) },
+      { id: 'd4e', time: '17:35 – 18:20', title: 'Yanzhong Square Park', tag: 'Park', desc: 'สวนสาธารณะสีเขียวใจกลางเมือง เหมาะเดินพักผ่อนช่วงเย็น', images: list('yanzhong_park', 1, 4) },
+      { id: 'd4f', time: '18:20 – 20:30', title: 'Nanjing Road', tag: 'Photo · Dinner', desc: 'เดินเล่นถ่ายรูปถนนนานกิงยามเย็น และทานมื้อเย็นช่วง 19:00 – 20:30', images: NANJING },
+      { id: 'd4g', time: '20:40 – 22:40', title: 'Christkindlmarkt @ YiFeng Galleria', tag: 'Market · Night', desc: 'ตลาดคริสต์มาสสไตล์ยุโรปริมเดอะบันด์ บรรยากาศอบอุ่นยามค่ำคืน แล้วกลับที่พัก', images: list('christmarkt', 1, 4) }
+    ],
+    day5: [
+      { id: 'd5a', time: 'Hangzhou', title: 'Jixian Pavilion', tag: 'Viewpoint', desc: 'ศาลาชมวิวริมทะเลสาบตะวันตก บรรยากาศร่มรื่น', images: list('jixian', 1, 2) },
+      { id: 'd5b', time: 'Hangzhou', title: 'Willow Waves at Liu Lang', tag: 'Top 10 West Lake', desc: 'หนึ่งใน 10 วิวเด็ดของทะเลสาบตะวันตก ต้นหลิวริมน้ำพลิ้วตามลม', images: list('willow', 1, 3) },
+      { id: 'd5c', time: 'Hangzhou', title: 'Leifeng Pagoda', tag: 'Landmark', desc: 'เจดีย์เลเฟิง แลนด์มาร์คชื่อดังริมทะเลสาบตะวันตก ขึ้นไปชมวิวมุมสูงได้', images: list('leifeng', 1, 3) },
+      { id: 'd5d', time: 'Hangzhou', title: 'Viewing Fish at Flower Harbor', tag: 'Top 10 West Lake', desc: 'สวนชมปลาและดอกไม้ หนึ่งใน 10 วิวเด็ดของทะเลสาบตะวันตก', images: list('viewfish', 1, 3) },
+      { id: 'd5e', time: 'Hangzhou', title: 'Xiling Bridge', tag: 'Photo', desc: 'สะพานโบราณ จุดถ่ายรูปริมทะเลสาบตะวันตก', images: list('xiling', 1, 2) },
+      { id: 'd5f', time: 'Hangzhou', title: 'Autumn Moon on a Calm Lake', tag: 'Top 10 West Lake', desc: 'จุดชมวิวพระจันทร์เหนือทะเลสาบ หนึ่งใน 10 วิวเด็ดของ West Lake', images: list('autumnmoon', 1, 3) },
+      { id: 'd5g', time: 'Hangzhou', title: 'Broken Bridge', tag: 'Landmark', desc: 'สะพานหักชื่อดังจากตำนานรักนางพญางูขาว จุดถ่ายรูปคู่กับ Leifeng Pagoda', images: list('brokenbridge', 1, 3) },
+      { id: 'd5h', time: 'Hangzhou', title: 'Hangzhou Tower', tag: 'Shopping · View', desc: 'ห้าง/หอคอยชมวิวเมืองหางโจวและทะเลสาบตะวันตก', images: list('hangzhoutower', 1, 4) },
+      { id: 'd5i', time: 'Hangzhou', title: 'City Balcony', tag: 'Night View', desc: 'จุดชมวิวแม่น้ำเฉียนถางยามค่ำคืน ตึกสูงเปิดไฟสวยงาม', images: list('citybalcony', 1, 3) }
+    ],
+    day6: [
+      { id: 'd6a', time: '10:10 – 11:10', title: 'Wukang Mansion & Road', tag: 'Photo · Landmark', desc: 'ตึกเรือสไตล์ Art Deco ขึ้นชื่อ จุดถ่ายรูปยอดนิยมของเซี่ยงไฮ้ (Line 10 ลง Jiaotong University ทางออก 7)', images: list('wukang', 1, 4) },
+      { id: 'd6b', time: '11:35 – 12:30', title: 'YONEX Power (Wan Ti Hui Store)', tag: 'Shopping', desc: 'ร้าน YONEX สาขา Wan Ti Hui เขต Xujiahui (Line 11 ลง Shanghai Swimming Pool ทางออก 3)', images: list('yonex_power', 1, 4) },
+      { id: 'd6c', time: '13:00 – 14:30', title: 'Anfu Road (13De Marzo cafe)', tag: 'Cafe · Eating', desc: 'ถนนสายคาเฟ่สวย แวะร้าน 13De Marzo คาเฟ่ชื่อดัง (Line 1 ลง Changshu Road ทางออก 8)', images: list('anfu_road', 1, 4) },
+      { id: 'd6d', time: '14:30 – 15:00', title: 'Wiggles wiggles', tag: 'Shopping · Photo', desc: 'ร้านสไตล์น่ารัก แวะเดินเล่นช้อปปิ้งเบาๆ ย่าน Anfu Road', images: list('wiggles', 1, 4) },
+      { id: 'd6e', time: '15:40 – 18:00', title: 'Shanghai Xintiandi (Madang Road)', tag: 'Photo · Shopping', desc: 'NY Bagelous Museum · Ace Studio (ร้านเทนนิส) เดินถ่ายรูปย่านตึกเก่าสไตล์ Shikumen', images: XINTIANDI },
+      { id: 'd6f', time: '18:30 – 19:30', title: 'YONEX (巴黎春天百货淮海店)', tag: 'Shopping', desc: 'โชว์รูม YONEX สาขาถนน Huaihai ในห้าง Printemps', images: list('yonex_shop', 1, 3) },
+      { id: 'd6g', time: '20:00 – 22:00', title: 'Yuyuan Garden (上海豫园)', tag: 'Eating · Shopping', desc: 'สวนจีนโบราณ ชมสถาปัตยกรรมยามค่ำ ชิมของกิน และช้อปของที่ระลึก แล้วกลับที่พัก', images: YUYUAN }
+    ]
+  };
+
+  var TIERS = [
+    { id: 't1', num: 1, label: 'Tier 1', rides: [
+      { name: 'TRON Lightcycle Power Run', images: list('dl_tron', 1, 2) },
+      { name: 'Zootopia Hot Pursuit', images: list('dl_zootopia', 1, 2) },
+      { name: 'Pirates of the Caribbean: Battle for the Sunken Treasure', images: list('dl_pirates', 1, 2) },
+      { name: 'Seven Dwarfs Mine Train', images: list('dl_sevendwarfs', 1, 3) },
+      { name: 'Enchanted Storybook Castle', images: list('dl_storybook', 1, 2) }
+    ] },
+    { id: 't2', num: 2, label: 'Tier 2', rides: [
+      { name: 'Roaring Rapids (Wet)', images: list('dl_roaring', 1, 3) },
+      { name: 'Soaring Over the Horizon', images: list('dl_soaring', 1, 2) },
+      { name: 'Buzz Lightyear Planet Rescue', images: list('dl_buzz', 1, 2) },
+      { name: 'The Many Adventures of Winnie the Pooh', images: list('dl_winnie', 1, 2) },
+      { name: 'Jet Packs', images: list('dl_jetpacks', 1, 2) },
+      { name: "Peter Pan's Flight", images: list('dl_peterpan', 1, 2) }
+    ] },
+    { id: 't3', num: 3, label: 'Tier 3', rides: [
+      { name: 'Dumbo the Flying Elephant', images: list('dl_dumbo', 1, 2) },
+      { name: 'Hunny Pot Spin', images: list('dl_hunnypot', 1, 2) },
+      { name: "Woody's Roundup", images: list('dl_woody', 1, 2) },
+      { name: 'Alice in Wonderland Maze', images: list('dl_alice', 1, 2) }
+    ] },
+    { id: 't4', num: 4, label: 'Tier 4', rides: [
+      { name: 'Fantasia Carousel', images: list('dl_fantasia', 1, 2) },
+      { name: 'Voyage to the Crystal Grotto', images: list('dl_voyage', 1, 2) },
+      { name: 'Explorer Canoes', images: list('dl_canoes', 1, 2) },
+      { name: 'Slinky Dog Spin', images: list('dl_slinky', 1, 2) }
+    ] }
+  ];
+
+  var R = function (id, days, title, loc, hl, rating, slug, n) {
+    return { id: id, days: days, title: title, location: loc, hl: hl, rating: rating, images: list('r_' + slug, 1, n) };
+  };
+  var RESTAURANTS = [
+    R('rs1', ['Day 2'], 'Lai laizianlong', 'Nanjing Road', 'เสี่ยวหลงเปา', '⭐⭐⭐⭐⭐', 'lai_lai_xianlong', 3),
+    R('rs2', ['Day 2', 'Day 4'], 'Long Time ago', 'Nanjing Road (Day 2) · West Nanjing Road (Day 4)', 'หม่าล่าไม้หมุน', '⭐⭐⭐⭐⭐', 'long_time_ago_nanjing_road', 3),
+    R('rs3', ['Day 2'], "Molly's Dessert", 'Nanjing Road', 'Ice cream', '', 'molly_s_dessert', 3),
+    R('rs4', ['Day 2'], 'Yuxingji Xiehuang Noodle Restaurant', 'Nanjing Road (East)', 'บะหมี่มันปู (crab roe noodles)', '', 'yuxingji_xiehuang_noodle', 3),
+    R('rs5', ['Day 2'], 'Xie san bao', 'Nanjing Road', 'บะหมี่มันปู', '', 'xie_san_bao', 3),
+    R('rs6', ['Day 2'], 'Jia Jia Tang Bao', "ใกล้ People's Square (Nanjing Road ฝั่งตะวันออก)", 'บะหมี่มันปู เสี่ยวหลงเปาต้นตำรับ', '', 'jia_jia_tang_bao', 3),
+    R('rs7', ['Day 2'], 'Hey tea', 'New World Xinwan Center, Nanjing Road', 'ชาผลไม้/ชีสชา สไตล์ Hey Tea', '⭐⭐⭐⭐⭐', 'hey_tea_new_world_xinwan_center', 3),
+    R('rs8', ['Day 2', 'Day 4'], 'New Sukiyaki', 'Mosaic Plaza, Nanjing Road ใกล้ No.1 Department Store (Day 2) · Shanghai Center Store, West Nanjing Road (Day 4)', 'Shabu Buffet', '⭐⭐⭐⭐⭐', 'new_sukiyaki', 3),
+    R('rs9', ['Day 2'], 'Dong Sheng', 'Mosaic Plaza, Nanjing Road', 'Shabu Buffet ~600 THB/head', '', 'dong_sheng', 3),
+    R('rs10', ['Day 2'], 'Fei Da Chu', 'Mosaic Plaza, Nanjing Road', 'หมูผัดพริกหยวก', '', 'fei_da_chu', 3),
+    R('rs11', ['Day 2'], 'Autumn Flavor', 'Nanjing Road', 'อาหารจีนทั่วไป', '', 'autumn_flavor', 3),
+    R('rs12', ['Day 2'], 'Gaolaojiu Hot Pot', '2F Huasheng Mansion, 399 Jiujiang Rd, Huangpu District', 'Shabu หม้อไฟฉงชิ่ง', '', 'gaolaojiu_hot_pot', 3),
+    R('rs13', ['Day 2'], 'Half a Drink (Banzhuo Shaokao Bistro)', "People's Square Branch", 'ร้านนั่งชิวหม่าล่าไม้ บรรยากาศกันเอง', '', 'half_a_drink_banzhuo_shaokao_bistro', 3),
+    R('rs14', ['Day 2'], 'Cocina19', 'The Bund Branch', 'Cafe วิวริมแม่น้ำ', '', 'cocina19', 3),
+    R('rs15', ['Day 3'], 'Sichuan Cuisine', 'Shanghai Disneyland', 'ต้มปลา', '', 'sichuan_cuisine', 3),
+    R('rs16', ['Day 3'], 'Xiang Zi Kuan', 'Shanghai Disneyland', 'ต้มปลาผักกาดดอง', '', 'xiang_zi_kuan', 3),
+    R('rs17', ['Day 3'], 'Ah ma', 'Shanghai Disneyland', 'เครื่องดื่ม', '⭐⭐⭐⭐⭐', 'ah_ma', 3),
+    R('rs18', ['Day 3'], 'Adventures of Winnie the pooh', 'Shanghai Disneyland', 'ขนมหวาน', '', 'adventures_of_winnie_the_pooh', 3),
+    R('rs20', ['Day 4'], 'Hey tea lab', 'West Nanjing Road', 'เมนูชาทดลอง/limited', '⭐⭐⭐⭐⭐', 'hey_tea_lab_west_nanjing', 3),
+    R('rs22', ['Day 4'], 'Amam London bakery', 'West Nanjing Road', 'ของหวาน & ขนมปัง', '', 'amam_london_bakery', 3),
+    R('rs23', ['Day 4'], 'Butterful & Creamorous', 'West Nanjing Road', 'ของหวาน & ขนมปัง', '', 'butterful_creamorous', 3),
+    R('rs24', ['Day 4'], 'Wok Man', '1000 Trees (1000Trees Mall)', 'หมูผัดพริกหยวก', '', 'wok_man', 3),
+    R('rs25', ['Day 5'], "Grandma' home", 'Xihu Lake Branch', 'ติดทะเลสาบซีหู อาหารอร่อยมาก', '⭐⭐⭐⭐⭐', 'grandma_home', 3),
+    R('rs26', ['Day 5'], 'Xin Bai Lu', 'Hubin Yintai in 77 store', 'ถูกและอร่อย หมูสามชั้นตุ๋น ปีกไก่ทอด', '', 'xin_bai_lu', 3),
+    R('rs27', ['Day 5'], 'Shan Xia Jian', 'Hubin Yintai in 77 store', 'Hotpot สไตล์เสฉวน', '', 'shan_xia_jian', 1),
+    R('rs28', ['Day 5'], 'Kaojiang Spicy Grilled Fish', 'Hubin Yintai in 77 store', 'ปลา และอาหารทั่วไป', '', 'kaojiang_spicy_grilled_fish', 3),
+    R('rs29', ['Day 5'], 'Zhi Wei Guan', 'Hubin branch', 'ขนมโมจิ ขนมเปี๊ยะ', '', 'zhi_wei_guan', 3),
+    R('rs30', ['Day 5'], 'Pan Fang Chun', 'Zhongshan South Road', 'เกี๊ยวทอด', '', 'pan_fang_chun', 3),
+    R('rs31', ['Day 5'], 'Fajiao Dining Hall Canneles', 'Zhongshan Road', 'ขนมหวาน bakery', '', 'fajiao_dining_hall_canneles', 3),
+    R('rs32', ['Day 6'], '13De Marzo', 'Anfu Road', 'Drinking Bear (เครื่องดื่มคาเฟ่ชื่อดัง)', '⭐⭐⭐⭐⭐', '13de_marzo', 3),
+    R('rs33', ['Day 6'], 'Grand Goldfinch', 'Anfu Road', 'อาหารทั่วไป บรรยากาศดี', '', 'grand_goldfinch', 3),
+    R('rs34', ['Day 6'], 'Matcha Tokyo', 'Wukang Road', 'เมนูมัทฉะ', '⭐⭐⭐⭐', 'matcha_tokyo', 3),
+    R('rs35', ['Day 6'], 'Matcha Wang', 'ใกล้ Wukang/Anfu', 'เมนูมัทฉะ', '⭐⭐⭐⭐', 'matcha_wang', 3),
+    R('rs36', ['Day 6'], 'Apoli Itabakery', 'ใกล้ Wukang Mansion', 'ของหวาน & ขนมปัง', '', 'apoli_itabakery', 3),
+    R('rs37', ['Day 6'], 'Tao Tao Ju', 'Xintiandi', 'เป็ดย่าง กุ้ง', '', 'tao_tao_ju', 3),
+    R('rs38', ['Day 6'], 'Nanxiang Mantou Dian', 'Yuyuan Garden', 'เสี่ยวหลงเปาต้นตำรับ ชื่อเสียงมากว่า 100 ปี', '', 'nanxiang_mantou_dian', 3)
+  ];
+
+  var SPARES = [
+    { id: 'sp1', days: ['Day 2'], title: 'Gongqing Forest Park', location: 'Yangpu District ริมแม่น้ำหวงผู่ · ห่างจาก North Bund ขึ้นเหนือ ~5-6 กม.', hl: 'รถไฟไอน้ำวิ่งรอบสวน · พายเรือที่ทะเลสาบ Yinghu · ถนนต้นแปะก๊วย (Ginkgo Avenue) และดงเมตาเซควอยา ช่วงใบไม้เปลี่ยนสีสวยมาก · งานเทศกาลเบญจมาศใบไม้ร่วง', images: list('sp_gongqing_forest_park', 1, 3) },
+    { id: 'sp2', days: ['Day 4'], title: 'Zhang Yuan', location: 'West Nanjing Road', hl: 'ตรอก Shikumen เก่า มีร้านกาแฟ/ร้านอาหารแนวสไตล์', images: list('sp_zhang_yuan', 1, 3) },
+    { id: 'sp3', days: ['Day 4'], title: 'The Louis Shanghai', location: 'HKRI Taikoo Hui, No. 789 West Nanjing Road (ติด Wujiang Road)', hl: 'อาคารทรงเรือของ Louis Vuitton ออกแบบโดย OMA ภายในเป็นนิทรรศการ Visionary Journeys + Trunkscape (อุโมงค์กระเป๋าเดินทางลอยฟ้า) มีคาเฟ่ Le Café Louis Vuitton ชั้น 3 · เข้าชมฟรีแต่ต้องจองผ่าน WeChat · เปิด 10:00-22:00', images: list('sp_the_louis_shanghai', 1, 3) },
+    { id: 'sp4', days: ['Day 6'], title: 'Longhua Temple', location: '2853 Longhua Road, Xuhui District (Metro สาย 11/12 ลง Longhua หรือ Longcao Road)', hl: 'เจดีย์ Longhua Pagoda สูง 40.4 ม. สไตล์ซ่ง 7 ชั้น · หอระฆังทองแดง 5 ตัน · หมู่โบสถ์วัดแบบจีนดั้งเดิม (วิหารพระศรีอริยเมตไตรย, พระอุโบสถหลัก)', images: list('sp_longhua_temple', 1, 3) },
+    { id: 'sp5', days: ['Day 6'], title: 'St. Ignatius Cathedral', location: 'Xujiahui, Xuhui District — ติดกับ Library Xujiahui', hl: 'โบสถ์กอทิกสีแดงอิฐ หอระฆังคู่ หนึ่งในโบสถ์คาทอลิกที่ใหญ่ที่สุดในเซี่ยงไฮ้ ลานหน้าโบสถ์เป็นจุดถ่ายรูป/พรีเวดดิ้งที่นิยม', images: list('sp_st_ignatius_cathedral', 1, 3) },
+    { id: 'sp6', days: ['Day 6'], title: 'Library Xujiahui', location: 'Xujiahui, Xuhui District — ติดกับ St. Ignatius Cathedral', hl: 'ห้องสมุดเก่าสถาปัตยกรรมยุโรป เก็บหนังสือ/หนังสือพิมพ์เก่าหลายภาษา (อังกฤษ ฝรั่งเศส เยอรมัน รัสเซีย) บรรยากาศไม้เข้มและโคมระย้าทองเหลือง มีระเบียงชมวิว', images: list('sp_library_xujiahui', 1, 3) }
+  ];
+
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+  var state = { day: 'day2', rf: 'all', open: { d2a: true, t1: true } };
+
+  function carousel(cid, images, h, extra) {
+    var slides = images.map(function (src) {
+      return '<div style="height:' + h + 'px;"><img src="' + src + '" alt="" loading="lazy"></div>';
+    }).join('');
+    return '<div class="carbox" style="height:' + h + 'px;">' +
+      '<div class="carousel" data-car="' + cid + '" style="height:' + h + 'px;">' + slides + '</div>' +
+      '<button class="nav l" data-slide="' + cid + '" data-dir="-1" aria-label="prev">‹</button>' +
+      '<button class="nav r" data-slide="' + cid + '" data-dir="1" aria-label="next">›</button>' +
+      (extra || '') + '</div>';
+  }
+
+  function placeCard(c) {
+    var isOpen = !!state.open[c.id];
+    var extra = '<div class="badges"><span class="badge">' + esc(c.time) + '</span></div>' +
+      '<span class="count">' + c.images.length + ' รูป</span>';
+    return '<div class="card">' + carousel(c.id, c.images, 190, extra) +
+      '<button class="head" data-toggle="' + c.id + '">' +
+        '<div class="row"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+          '<span class="title">' + esc(c.title) + '</span><span class="tag">' + esc(c.tag) + '</span></div>' +
+          '<span class="chev" style="transform:rotate(' + (isOpen ? 180 : 0) + 'deg)">⌄</span></div>' +
+        (isOpen ? '<p class="desc">' + esc(c.desc) + '</p>' : '') +
+      '</button></div>';
+  }
+
+  function listingCard(c, prefix) {
+    var isOpen = !!state.open[c.id];
+    var badges = c.days.map(function (d) { return '<span class="badge">' + (prefix ? prefix + ' ' : '') + esc(d) + '</span>'; }).join('');
+    var extra = '<div class="badges">' + badges + '</div>' +
+      (c.rating ? '<span class="rate">' + c.rating + '</span>' : '<span class="count">' + c.images.length + ' รูป</span>');
+    return '<div class="card">' + carousel(c.id, c.images, 180, extra) +
+      '<button class="head" data-toggle="' + c.id + '">' +
+        '<div class="row"><span class="title" style="font-size:16px;">' + esc(c.title) + '</span>' +
+          '<span class="chev" style="transform:rotate(' + (isOpen ? 180 : 0) + 'deg)">⌄</span></div>' +
+        '<div class="loc">' + esc(c.location) + '</div>' +
+        (isOpen ? '<p class="desc">ไฮไลต์: ' + esc(c.hl) + '</p>' : '') +
+      '</button></div>';
+  }
+
+  function renderStatic() {
+    document.getElementById('hl').innerHTML = HIGHLIGHTS.map(function (h) {
+      return '<div style="flex:0 0 auto;width:172px;height:114px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 14px rgba(86,52,27,.12);">' +
+        '<img src="' + h.img + '" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">' +
+        '<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(25,13,7,.78) 100%);"></div>' +
+        '<span style="position:absolute;left:10px;right:10px;bottom:9px;color:#fff;font-size:12.5px;font-weight:700;line-height:1.3;">' + esc(h.name) + '</span></div>';
+    }).join('');
+
+    document.getElementById('ovDays').innerHTML = OVERVIEW.map(function (d) {
+      return '<div style="padding:12px 16px;border-bottom:1px solid var(--line);display:flex;gap:10px;">' +
+        '<span style="flex:0 0 52px;font-size:12px;font-weight:700;color:var(--brand);">' + d[0] + '</span>' +
+        '<div style="flex:1;min-width:0;"><div style="font-size:11px;color:var(--faint);font-weight:600;">' + d[1] + '</div>' +
+        '<div style="font-size:12.5px;color:var(--ink2);line-height:1.5;margin-top:2px;">' + esc(d[2]) + '</div></div></div>';
+    }).join('');
+
+    document.getElementById('flightCar').innerHTML = carousel('flight', FLIGHT, 145, '');
+    document.getElementById('hotelPhotos').innerHTML = HOTEL.map(function (h) {
+      return '<img src="' + h + '" alt="" loading="lazy">';
+    }).join('');
+  }
+
+  function renderDay() {
+    var def = DAYS.filter(function (d) { return d.id === state.day; })[0];
+    document.getElementById('dayDate').textContent = def.label + ' · ' + def.date;
+    document.getElementById('dayTabs').innerHTML = DAYS.map(function (d) {
+      return '<button class="tab' + (d.id === state.day ? ' on' : '') + '" data-day="' + d.id + '">' + d.label + '</button>';
+    }).join('');
+
+    var html = '';
+    if (state.day === 'day1') {
+      html = '<div style="padding:0 20px;"><div class="card">' +
+        carousel('d1', HOTEL.slice(0, 4), 190, '') +
+        '<div style="padding:14px 16px 18px;"><h3 class="title">Jinjiang Inn — Check-in</h3>' +
+        '<p class="desc">เดินทางจากกรุงเทพฯ ถึงเซี่ยงไฮ้ช่วงค่ำ (MU8644 · PVG 22:10) เข้าที่พัก Jinjiang Inn เพื่อพักผ่อน เช็คอินได้หลัง 14:00</p></div></div></div>';
+    } else if (state.day === 'day3') {
+      var banner = '<div style="border-radius:18px;overflow:hidden;position:relative;">' +
+        carousel('d3b', [IMG('dl_banner_1'), IMG('dl_banner_2'), IMG('dl_banner_3'), IMG('dl_storybook_1')], 185,
+          '<div style="position:absolute;left:0;right:0;bottom:0;height:92px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(25,13,7,.8) 100%);pointer-events:none;"></div>' +
+          '<div style="position:absolute;left:14px;bottom:12px;color:#fff;pointer-events:none;">' +
+          '<div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;">4 Dec 2026</div>' +
+          '<div style="font-size:18px;font-weight:800;">Shanghai Disneyland</div></div>') + '</div>';
+      var tiers = TIERS.map(function (t) {
+        var open = state.open[t.id];
+        var rides = !open ? '' : '<div style="padding:0 16px 16px;display:flex;flex-direction:column;gap:12px;">' +
+          t.rides.map(function (r, i) {
+            var cid = t.id + '_r' + i;
+            return '<div style="border-radius:14px;overflow:hidden;border:1px solid var(--line);">' +
+              carousel(cid, r.images, 132, '<span class="count">' + r.images.length + ' รูป</span>') +
+              '<div style="padding:8px 10px;background:var(--bg);"><span style="font-size:12.5px;font-weight:700;color:var(--ink2);">' + esc(r.name) + '</span></div></div>';
+          }).join('') + '</div>';
+        return '<div class="card">' +
+          '<button class="head" data-toggle="' + t.id + '" style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;">' +
+          '<span style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="width:30px;height:30px;border-radius:999px;background:var(--brand);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;">' + t.num + '</span>' +
+          '<span style="font-size:15px;font-weight:700;">' + t.label + '</span>' +
+          '<span style="font-size:11px;color:var(--mute2);font-weight:600;">(' + t.rides.length + ' rides)</span></span>' +
+          '<span class="chev" style="transform:rotate(' + (open ? 180 : 0) + 'deg)">⌄</span></button>' + rides + '</div>';
+      }).join('');
+      html = '<div style="padding:0 20px;" class="stack">' + banner + tiers + '</div>';
+    } else if (state.day === 'day7') {
+      html = '<div style="padding:0 20px;"><div class="card">' +
+        carousel('d7', [IMG('day6_comeback_1')].concat(FLIGHT), 175, '') +
+        '<div style="padding:14px 16px 18px;"><h3 class="title">Back to Thailand</h3>' +
+        '<p class="desc">เช็คเอาท์ก่อน 12:00 เดินทางสู่สนามบิน Pudong เที่ยวบิน MU8643 · PVG 12:00 → BKK 15:55</p></div></div></div>';
+    } else {
+      var pre = '';
+      if (state.day === 'day5') {
+        pre = '<div style="padding:0 20px 14px;"><div style="border-radius:18px;overflow:hidden;position:relative;height:150px;">' +
+          '<img src="' + IMG('brokenbridge_2') + '" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">' +
+          '<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(25,13,7,.75) 100%);"></div>' +
+          '<div style="position:absolute;left:14px;bottom:12px;color:#fff;">' +
+          '<div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;">6 Dec 2026</div>' +
+          '<div style="font-size:18px;font-weight:800;">West Lake, Hangzhou</div></div></div></div>';
+      }
+      html = pre + '<div class="stack" style="padding:0 20px;">' + (PLACES[state.day] || []).map(placeCard).join('') + '</div>';
+    }
+    document.getElementById('dayBody').innerHTML = html;
+  }
+
+  function renderRestaurants() {
+    var rfs = ['all', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'];
+    document.getElementById('rstTabs').innerHTML = rfs.map(function (f) {
+      return '<button class="tab' + (state.rf === f ? ' on' : '') + '" data-rf="' + f + '">' + (f === 'all' ? 'ทั้งหมด' : f) + '</button>';
+    }).join('');
+    var shown = state.rf === 'all' ? RESTAURANTS : RESTAURANTS.filter(function (r) { return r.days.indexOf(state.rf) >= 0; });
+    document.getElementById('rstNote').textContent = RESTAURANTS.length + ' ร้านทั้งทริป · แสดง ' + shown.length + ' ร้าน · แตะการ์ดดูรายละเอียด';
+    document.getElementById('rstBody').innerHTML = shown.map(function (c) { return listingCard(c, ''); }).join('');
+  }
+
+  function renderSpares() {
+    document.getElementById('spBody').innerHTML = SPARES.map(function (c) { return listingCard(c, 'แนะนำ'); }).join('');
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-slide],[data-toggle],[data-day],[data-rf]') : null;
+    if (!t) return;
+    if (t.hasAttribute('data-slide')) {
+      var car = document.querySelector('[data-car="' + t.getAttribute('data-slide') + '"]');
+      if (car) car.scrollBy({ left: Number(t.getAttribute('data-dir')) * car.clientWidth, behavior: 'smooth' });
+      return;
+    }
+    if (t.hasAttribute('data-toggle')) {
+      var id = t.getAttribute('data-toggle');
+      state.open[id] = !state.open[id];
+      if (id.charAt(0) === 'r' || id.charAt(0) === 's') { renderRestaurants(); renderSpares(); } else { renderDay(); }
+      return;
+    }
+    if (t.hasAttribute('data-day')) { state.day = t.getAttribute('data-day'); renderDay(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); return; }
+    if (t.hasAttribute('data-rf')) { state.rf = t.getAttribute('data-rf'); renderRestaurants(); return; }
+  });
+
+  var modal = document.getElementById('hotelModal');
+  document.getElementById('hotelCard').addEventListener('click', function () { modal.classList.add('on'); document.body.style.overflow = 'hidden'; });
+  document.getElementById('hotelClose').addEventListener('click', function () { modal.classList.remove('on'); document.body.style.overflow = ''; });
+  modal.addEventListener('click', function (e) { if (e.target === modal) { modal.classList.remove('on'); document.body.style.overflow = ''; } });
+
+  renderStatic();
+  renderDay();
+  renderRestaurants();
+  renderSpares();
+})();
+</script>
+</body>
+</html>
