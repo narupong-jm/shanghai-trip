@@ -116,9 +116,9 @@
 <div class="wrap">
   <!-- HERO -->
   <div style="position:relative;width:100%;height:400px;overflow:hidden;">
-    <img src="images/hero.jpg" alt="Shanghai" style="width:100%;height:100%;object-fit:cover;display:block;">
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,32,20,.15) 0%,rgba(42,22,14,.35) 55%,rgba(30,15,9,.92) 100%);"></div>
-    <div style="position:absolute;left:24px;right:24px;bottom:26px;">
+    <div id="heroCar"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,32,20,.15) 0%,rgba(42,22,14,.35) 55%,rgba(30,15,9,.92) 100%);pointer-events:none;"></div>
+    <div style="position:absolute;left:24px;right:24px;bottom:26px;pointer-events:none;">
       <div style="color:var(--gold);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;">Travel Guide</div>
       <h1 class="serif" style="color:#fff;font-size:33px;font-weight:800;line-height:1.14;margin-top:6px;">Shanghai<br>Autumn Trip</h1>
       <p style="margin:8px 0 0;color:#F3E3D2;font-size:14px;font-weight:500;">2 – 8 Dec 2026 · 7D6N · Mm &amp; Pajaryy</p>
@@ -138,12 +138,12 @@
     <h2 class="sec-h serif">Member</h2>
     <div style="display:flex;gap:12px;margin-top:12px;">
       <div class="card" style="flex:1;padding:14px;text-align:center;">
-        <div style="width:66px;height:66px;border-radius:999px;overflow:hidden;margin:0 auto 8px;border:2px solid var(--accent-border);"><img src="images/member_1.jpg" alt="Mm" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="width:66px;height:66px;border-radius:999px;overflow:hidden;margin:0 auto 8px;border:2px solid var(--accent-border);"><img src="images/member_mm_1.jpg" alt="Mm" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div style="font-size:14px;font-weight:700;">Mm</div>
         <div style="font-size:11px;color:var(--mute2);margin-top:2px;">Narupong Jarasbunpaisarn</div>
       </div>
       <div class="card" style="flex:1;padding:14px;text-align:center;">
-        <div style="width:66px;height:66px;border-radius:999px;overflow:hidden;margin:0 auto 8px;border:2px solid var(--accent-border);"><img src="images/member_2.jpg" alt="Pajaryy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="width:66px;height:66px;border-radius:999px;overflow:hidden;margin:0 auto 8px;border:2px solid var(--accent-border);"><img src="images/member_pj_1.jpg" alt="Pajaryy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div style="font-size:14px;font-weight:700;">Pajaryy</div>
         <div style="font-size:11px;color:var(--mute2);margin-top:2px;">Pajaree Suprapan</div>
       </div>
@@ -253,20 +253,23 @@
 
 <script>
 (function () {
+  var M = {"d2a":["pl_nbgl_1.jpg","pl_nbgl_2.jpg","pl_nbgl_3.jpg","pl_nbgl_4.jpg","pl_nbgl_5.jpg","pl_nbgl_6.jpg"],"d2b":["pl_cube_1.jpg","pl_cube_2.jpg","pl_cube_3.jpg","pl_cube_4.jpg","pl_cube_5.jpg"],"d2c":["pl_waibaidu_1.jpg","pl_waibaidu_2.jpg","pl_waibaidu_3.jpg","pl_waibaidu_4.jpg"],"d2d":["pl_nanjing_1.jpg","pl_nanjing_2.jpg","pl_nanjing_3.jpg","pl_nanjing_4.jpg","pl_nanjing_5.jpg","pl_nanjing_6.jpg","pl_nanjing_7.jpg","pl_nanjing_8.jpg"],"d2e":["pl_tunnel_1.jpg","pl_tunnel_2.jpg","pl_tunnel_3.jpg","pl_tunnel_4.jpg","pl_tunnel_5.jpg","pl_tunnel_6.jpg"],"d2f":["pl_mingzhu_1.jpg","pl_mingzhu_2.jpg","pl_mingzhu_3.jpg","pl_mingzhu_4.jpg","pl_mingzhu_5.jpg"],"d2g":["pl_lujiazui_1.jpg","pl_lujiazui_2.jpg","pl_lujiazui_3.jpg","pl_lujiazui_4.jpg"],"d2h":["pl_bundview_1.jpg","pl_bundview_2.jpg","pl_bundview_3.jpg","pl_bundview_4.jpg","pl_bundview_5.jpg","pl_bundview_6.jpg","pl_bundview_7.jpg"],"d4a":["pl_jingan_temple_1.jpg","pl_jingan_temple_2.jpg","pl_jingan_temple_3.jpg","pl_jingan_temple_4.jpg","pl_jingan_temple_5.jpg"],"d4b":["pl_jingan_sculpture_1.jpg","pl_jingan_sculpture_2.jpg","pl_jingan_sculpture_3.jpg","pl_jingan_sculpture_4.jpg","pl_jingan_sculpture_5.jpg","pl_jingan_sculpture_6.jpg"],"d4c":["pl_west_nanjing_1.jpg","pl_west_nanjing_2.jpg","pl_west_nanjing_3.jpg","pl_west_nanjing_4.jpg","pl_west_nanjing_5.jpg","pl_west_nanjing_6.jpg","pl_west_nanjing_7.jpg"],"d4d":["pl_trees1000_1.jpg","pl_trees1000_2.jpg","pl_trees1000_3.jpg","pl_trees1000_4.jpg","pl_trees1000_5.jpg"],"d4e":["pl_yanzhong_1.jpg","pl_yanzhong_2.jpg","pl_yanzhong_3.jpg","pl_yanzhong_4.jpg","pl_yanzhong_5.jpg","pl_yanzhong_6.jpg"],"d4g":["pl_christmarkt_1.jpg","pl_christmarkt_2.jpg","pl_christmarkt_3.jpg","pl_christmarkt_4.jpg","pl_christmarkt_5.jpg","pl_christmarkt_6.jpg","pl_christmarkt_7.jpg","pl_christmarkt_8.jpg"],"d5a":["pl_jixian_1.jpg","pl_jixian_2.jpg","pl_jixian_3.jpg"],"d5b":["pl_willow_1.jpg","pl_willow_2.jpg","pl_willow_3.jpg"],"d5c":["pl_leifeng_1.jpg","pl_leifeng_2.jpg","pl_leifeng_3.jpg"],"d5d":["pl_viewfish_1.jpg","pl_viewfish_2.jpg","pl_viewfish_3.jpg"],"d5e":["pl_xiling_1.jpg","pl_xiling_2.jpg"],"d5f":["pl_autumnmoon_1.jpg","pl_autumnmoon_2.jpg","pl_autumnmoon_3.jpg"],"d5g":["pl_brokenbridge_1.jpg","pl_brokenbridge_2.jpg","pl_brokenbridge_3.jpg"],"d5h":["pl_hangzhoutower_1.jpg","pl_hangzhoutower_2.jpg","pl_hangzhoutower_3.jpg","pl_hangzhoutower_4.jpg"],"d5i":["pl_citybalcony_1.jpg","pl_citybalcony_2.jpg","pl_citybalcony_3.jpg"],"d6a":["pl_wukang_1.jpg","pl_wukang_2.jpg","pl_wukang_3.jpg","pl_wukang_4.jpg"],"d6b":["pl_yonex_power_1.jpg","pl_yonex_power_2.jpg","pl_yonex_power_3.jpg","pl_yonex_power_4.jpg"],"d6c":["pl_anfu_1.jpg","pl_anfu_2.jpg","pl_anfu_3.jpg","pl_anfu_4.jpg"],"d6d":["pl_wiggles_1.jpg","pl_wiggles_2.jpg","pl_wiggles_3.jpg","pl_wiggles_4.jpg"],"d6e":["pl_xintiandi_1.jpg","pl_xintiandi_2.jpg","pl_xintiandi_3.jpg","pl_xintiandi_4.jpg","pl_xintiandi_5.jpg","pl_xintiandi_6.jpg","pl_xintiandi_7.jpg"],"d6f":["pl_yonex_shop_1.jpg","pl_yonex_shop_2.jpg","pl_yonex_shop_3.jpg","pl_yonex_shop_4.jpg"],"d6g":["pl_yuyuan_1.jpg","pl_yuyuan_2.jpg","pl_yuyuan_3.jpg","pl_yuyuan_4.jpg","pl_yuyuan_5.jpg"],"d4f":["pl_nanjing_1.jpg","pl_nanjing_2.jpg","pl_nanjing_3.jpg","pl_nanjing_4.jpg","pl_nanjing_5.jpg","pl_nanjing_6.jpg","pl_nanjing_7.jpg","pl_nanjing_8.jpg"],"rs1":["r_lai_lai_xianlong_1.jpg","r_lai_lai_xianlong_2.jpg","r_lai_lai_xianlong_3.jpg","r_lai_lai_xianlong_4.jpg"],"rs2":["r_long_time_ago_nanjing_road_1.jpg","r_long_time_ago_nanjing_road_2.jpg","r_long_time_ago_nanjing_road_3.jpg","r_long_time_ago_nanjing_road_4.jpg"],"rs3":["r_molly_s_dessert_1.jpg","r_molly_s_dessert_2.jpg","r_molly_s_dessert_3.jpg","r_molly_s_dessert_4.jpg"],"rs4":["r_yuxingji_xiehuang_noodle_1.jpg","r_yuxingji_xiehuang_noodle_2.jpg","r_yuxingji_xiehuang_noodle_3.jpg","r_yuxingji_xiehuang_noodle_4.jpg"],"rs5":["r_xie_san_bao_1.jpg","r_xie_san_bao_2.jpg","r_xie_san_bao_3.jpg","r_xie_san_bao_4.jpg"],"rs6":["r_jia_jia_tang_bao_1.jpg","r_jia_jia_tang_bao_2.jpg","r_jia_jia_tang_bao_3.jpg","r_jia_jia_tang_bao_4.jpg"],"rs7":["r_hey_tea_new_world_xinwan_center_1.jpg","r_hey_tea_new_world_xinwan_center_2.jpg","r_hey_tea_new_world_xinwan_center_3.jpg","r_hey_tea_new_world_xinwan_center_4.jpg"],"rs8":["r_new_sukiyaki_1.jpg","r_new_sukiyaki_2.jpg","r_new_sukiyaki_3.jpg","r_new_sukiyaki_4.jpg"],"rs9":["r_dong_sheng_1.jpg","r_dong_sheng_2.jpg","r_dong_sheng_3.jpg","r_dong_sheng_4.jpg"],"rs10":["r_fei_da_chu_1.jpg","r_fei_da_chu_2.jpg","r_fei_da_chu_3.jpg","r_fei_da_chu_4.jpg"],"rs11":["r_autumn_flavor_1.jpg","r_autumn_flavor_2.jpg","r_autumn_flavor_3.jpg","r_autumn_flavor_4.jpg","r_autumn_flavor_5.jpg"],"rs12":["r_gaolaojiu_hot_pot_1.jpg","r_gaolaojiu_hot_pot_2.jpg","r_gaolaojiu_hot_pot_3.jpg","r_gaolaojiu_hot_pot_4.jpg"],"rs13":["r_half_a_drink_banzhuo_shaokao_bistro_1.jpg","r_half_a_drink_banzhuo_shaokao_bistro_2.jpg","r_half_a_drink_banzhuo_shaokao_bistro_3.jpg","r_half_a_drink_banzhuo_shaokao_bistro_4.jpg"],"rs14":["r_cocina19_1.jpg","r_cocina19_2.jpg","r_cocina19_3.jpg","r_cocina19_4.jpg"],"rs15":["r_sichuan_cuisine_1.jpg","r_sichuan_cuisine_2.jpg","r_sichuan_cuisine_3.jpg","r_sichuan_cuisine_4.jpg"],"rs16":["r_xiang_zi_kuan_1.jpg","r_xiang_zi_kuan_2.jpg","r_xiang_zi_kuan_3.jpg","r_xiang_zi_kuan_4.jpg"],"rs17":["r_ah_ma_1.jpg","r_ah_ma_2.jpg","r_ah_ma_3.jpg","r_ah_ma_4.jpg"],"rs18":["r_adventures_of_winnie_the_pooh_1.jpg","r_adventures_of_winnie_the_pooh_2.jpg","r_adventures_of_winnie_the_pooh_3.jpg"],"rs20":["r_hey_tea_lab_west_nanjing_1.jpg","r_hey_tea_lab_west_nanjing_2.jpg","r_hey_tea_lab_west_nanjing_3.jpg","r_hey_tea_lab_west_nanjing_4.jpg"],"rs22":["r_amam_london_bakery_1.jpg","r_amam_london_bakery_2.jpg","r_amam_london_bakery_3.jpg","r_amam_london_bakery_4.jpg","r_amam_london_bakery_5.jpg"],"rs23":["r_butterful_creamorous_1.jpg","r_butterful_creamorous_2.jpg","r_butterful_creamorous_3.jpg","r_butterful_creamorous_4.jpg","r_butterful_creamorous_5.jpg"],"rs24":["r_wok_man_1.jpg","r_wok_man_2.jpg","r_wok_man_3.jpg","r_wok_man_4.jpg"],"rs25":["r_grandma_home_1.jpg","r_grandma_home_2.jpg","r_grandma_home_3.jpg","r_grandma_home_4.jpg"],"rs26":["r_xin_bai_lu_1.jpg","r_xin_bai_lu_2.jpg","r_xin_bai_lu_3.jpg"],"rs27":["r_shan_xia_jian_1.jpg"],"rs28":["r_kaojiang_spicy_grilled_fish_1.jpg","r_kaojiang_spicy_grilled_fish_2.jpg","r_kaojiang_spicy_grilled_fish_3.jpg","r_kaojiang_spicy_grilled_fish_4.jpg"],"rs29":["r_zhi_wei_guan_1.jpg","r_zhi_wei_guan_2.jpg","r_zhi_wei_guan_3.jpg","r_zhi_wei_guan_4.jpg"],"rs30":["r_pan_fang_chun_1.jpg","r_pan_fang_chun_2.jpg","r_pan_fang_chun_3.jpg","r_pan_fang_chun_4.jpg"],"rs31":["r_fajiao_dining_hall_canneles_1.jpg","r_fajiao_dining_hall_canneles_2.jpg","r_fajiao_dining_hall_canneles_3.jpg"],"rs32":["r_13de_marzo_1.jpg","r_13de_marzo_2.jpg","r_13de_marzo_3.jpg","r_13de_marzo_4.jpg"],"rs33":["r_grand_goldfinch_1.jpg","r_grand_goldfinch_2.jpg","r_grand_goldfinch_3.jpg","r_grand_goldfinch_4.jpg"],"rs34":["r_matcha_tokyo_1.jpg","r_matcha_tokyo_2.jpg","r_matcha_tokyo_3.jpg","r_matcha_tokyo_4.jpg"],"rs35":["r_matcha_wang_1.jpg","r_matcha_wang_2.jpg","r_matcha_wang_3.jpg","r_matcha_wang_4.jpg"],"rs36":["r_apoli_itabakery_1.jpg","r_apoli_itabakery_2.jpg","r_apoli_itabakery_3.jpg","r_apoli_itabakery_4.jpg"],"rs37":["r_tao_tao_ju_1.jpg","r_tao_tao_ju_2.jpg","r_tao_tao_ju_3.jpg","r_tao_tao_ju_4.jpg"],"rs38":["r_nanxiang_mantou_dian_1.jpg","r_nanxiang_mantou_dian_2.jpg","r_nanxiang_mantou_dian_3.jpg","r_nanxiang_mantou_dian_4.jpg"],"sp1":["sp_gongqing_forest_park_1.jpg","sp_gongqing_forest_park_2.jpg","sp_gongqing_forest_park_3.jpg","sp_gongqing_forest_park_4.jpg"],"sp2":["sp_zhang_yuan_1.jpg","sp_zhang_yuan_2.jpg","sp_zhang_yuan_3.jpg","sp_zhang_yuan_4.jpg"],"sp3":["sp_the_louis_shanghai_1.jpg","sp_the_louis_shanghai_2.jpg","sp_the_louis_shanghai_3.jpg","sp_the_louis_shanghai_4.jpg"],"sp4":["sp_longhua_temple_1.jpg","sp_longhua_temple_2.jpg","sp_longhua_temple_3.jpg","sp_longhua_temple_4.jpg"],"sp5":["sp_st_ignatius_cathedral_1.jpg","sp_st_ignatius_cathedral_2.jpg","sp_st_ignatius_cathedral_3.jpg","sp_st_ignatius_cathedral_4.jpg"],"sp6":["sp_library_xujiahui_1.jpg","sp_library_xujiahui_2.jpg","sp_library_xujiahui_3.jpg","sp_library_xujiahui_4.jpg","sp_library_xujiahui_5.jpg"],"ride_storybook":["dl_storybook_1.jpg","dl_storybook_2.jpg","dl_storybook_3.jpg","dl_storybook_4.jpg"],"ride_pirates":["dl_pirates_1.jpg","dl_pirates_2.jpg","dl_pirates_3.jpg"],"ride_sevendwarfs":["dl_sevendwarfs_1.jpg","dl_sevendwarfs_2.jpg","dl_sevendwarfs_3.jpg"],"ride_tron":["dl_tron_1.jpg","dl_tron_2.jpg","dl_tron_3.jpg"],"ride_zootopia":["dl_zootopia_1.jpg","dl_zootopia_2.jpg","dl_zootopia_3.jpg"],"ride_buzz":["dl_buzz_1.jpg","dl_buzz_2.jpg","dl_buzz_3.jpg"],"ride_jetpacks":["dl_jetpacks_1.jpg","dl_jetpacks_2.jpg","dl_jetpacks_3.jpg"],"ride_peterpan":["dl_peterpan_1.jpg","dl_peterpan_2.jpg","dl_peterpan_3.jpg"],"ride_roaring":["dl_roaring_1.jpg","dl_roaring_2.jpg","dl_roaring_3.jpg","dl_roaring_4.jpg"],"ride_soaring":["dl_soaring_1.jpg","dl_soaring_2.jpg"],"ride_winnie":["dl_winnie_1.jpg","dl_winnie_2.jpg","dl_winnie_3.jpg"],"ride_alice":["dl_alice_1.jpg","dl_alice_2.jpg","dl_alice_3.jpg"],"ride_dumbo":["dl_dumbo_1.jpg","dl_dumbo_2.jpg","dl_dumbo_3.jpg"],"ride_hunnypot":["dl_hunnypot_1.jpg","dl_hunnypot_2.jpg","dl_hunnypot_3.jpg"],"ride_woody":["dl_woody_1.jpg","dl_woody_2.jpg","dl_woody_3.jpg"],"ride_canoes":["dl_canoes_1.jpg","dl_canoes_2.jpg","dl_canoes_3.jpg"],"ride_fantasia":["dl_fantasia_1.jpg","dl_fantasia_2.jpg","dl_fantasia_3.jpg"],"ride_slinky":["dl_slinky_1.jpg","dl_slinky_2.jpg","dl_slinky_3.jpg"],"ride_voyage":["dl_voyage_1.jpg","dl_voyage_2.jpg","dl_voyage_3.jpg"],"dlbanner":["dlb_1.jpg","dlb_2.jpg","dlb_3.jpg","dlb_4.jpg"],"hotel":["hotel_1.jpg","hotel_2.jpg","hotel_3.jpg","hotel_4.jpg","hotel_5.jpg","hotel_6.jpg","hotel_7.jpg","hotel_8.jpg"],"flight":["flight_1.jpg","flight_2.jpg","flight_3.jpg"],"cover":["cover_1.jpg","cover_2.jpg","cover_3.jpg"],"d6back":["d6back_1.jpg","d6back_2.jpg"],"member1":["member_mm_1.jpg"],"member2":["member_pj_1.jpg"]};
+  var P = function (k) { return (M[k] || []).map(function (f) { return 'images/' + f; }); };
   var IMG = function (n) { return 'images/' + n + '.jpg'; };
   var list = function (base, from, to) { var a = []; for (var i = from; i <= to; i++) a.push(IMG(base + '_' + i)); return a; };
 
-  var HOTEL = list('hotel', 1, 8);
-  var FLIGHT = list('flight', 1, 3);
-  var NANJING = list('nanjing', 1, 4);
-  var XINTIANDI = list('xintiandi', 1, 4);
-  var YUYUAN = list('yuyuan', 1, 4);
+  var HOTEL = P('hotel');
+  var FLIGHT = P('flight');
+  var NANJING = P('d2d');
+  var XINTIANDI = P('d6e');
+  var YUYUAN = P('d6g');
+  var COVER = P('cover');
 
   var HIGHLIGHTS = [
-    { name: 'The Bund Viewpoint', img: IMG('bundview_1') },
-    { name: 'Mingzhu Roundabout', img: IMG('mingzhu_1') },
-    { name: 'West Lake, Hangzhou', img: IMG('brokenbridge_2') },
-    { name: 'Shanghai Disneyland', img: IMG('dl_banner_1') }
+    { name: 'The Bund Viewpoint', img: P('d2h')[0] },
+    { name: 'Mingzhu Roundabout', img: P('d2f')[0] },
+    { name: 'West Lake, Hangzhou', img: P('d5g')[1] },
+    { name: 'Shanghai Disneyland', img: P('dlbanner')[0] }
   ];
 
   var DAYS = [
@@ -291,78 +294,78 @@
 
   var PLACES = {
     day2: [
-      { id: 'd2a', time: '09:40 – 10:30', title: 'North Bund Green Land', tag: 'Photo', desc: 'ถ่ายรูป ชมวิวริมแม่น้ำหวงผู่แบบฟินๆ (เดินเข้าสวนจาก International Passenger Terminal ทางออก 3)', images: list('nbgl', 1, 4) },
-      { id: 'd2b', time: '10:30 – 13:00', title: 'Space and Time Cube+', tag: 'Photo · Playing', desc: 'ถ่ายรูปไฟที่ Space and Time Cube+ ชั้น LG1 ตึก Sinar Mas Plaza', images: list('cube', 1, 4) },
-      { id: 'd2c', time: '13:00 – 13:20', title: 'Waibaidu Bridge', tag: 'Photo', desc: 'เดินชมวิว + ถ่ายรูปสะพานเหล็กเก่าแก่ข้ามแม่น้ำซูโจว ก่อนเดินต่อไปถนนนานกิง', images: list('waibaidu', 1, 3) },
+      { id: 'd2a', time: '09:40 – 10:30', title: 'North Bund Green Land', tag: 'Photo', desc: 'ถ่ายรูป ชมวิวริมแม่น้ำหวงผู่แบบฟินๆ (เดินเข้าสวนจาก International Passenger Terminal ทางออก 3)', images: P('d2a') },
+      { id: 'd2b', time: '10:30 – 13:00', title: 'Space and Time Cube+', tag: 'Photo · Playing', desc: 'ถ่ายรูปไฟที่ Space and Time Cube+ ชั้น LG1 ตึก Sinar Mas Plaza', images: P('d2b') },
+      { id: 'd2c', time: '13:00 – 13:20', title: 'Waibaidu Bridge', tag: 'Photo', desc: 'เดินชมวิว + ถ่ายรูปสะพานเหล็กเก่าแก่ข้ามแม่น้ำซูโจว ก่อนเดินต่อไปถนนนานกิง', images: P('d2c') },
       { id: 'd2d', time: '13:20 – 15:00', title: 'Nanjing Road', tag: 'Photo · Lunch', desc: 'เดินชมวิวเรื่อยๆ จนถึงถนนนานกิง แล้วทานมื้อเที่ยงช่วง 14:00 – 15:00', images: NANJING },
-      { id: 'd2e', time: '15:00 – 15:10', title: 'The Bund Sightseeing Tunnel', tag: 'Transport · Photo', desc: 'นั่งรถไฟลอดอุโมงค์ข้ามแม่น้ำ ชมแสงสีระหว่างทาง เพื่อข้ามไปฝั่งหอไข่มุก', images: list('tunnel', 1, 4) },
-      { id: 'd2f', time: '15:10 – 19:00', title: 'Mingzhu Roundabout', tag: 'Photo · Shopping', desc: 'เดินเที่ยวและช้อปปิ้งรอบๆ หอไข่มุก วงเวียนลอยฟ้าจุดถ่ายรูปยอดนิยม', images: list('mingzhu', 1, 4) },
-      { id: 'd2g', time: '19:00 – 20:00', title: 'Lujiazui', tag: 'Photo', desc: 'เดินเล่นถ่ายรูปวิวตึกสูง และถ่ายรูปที่บันไดเลื่อนวงแหวน Lujiazui', images: list('lujiazui', 1, 3) },
-      { id: 'd2h', time: '21:30 – 22:30', title: 'The Bund Viewpoint & Rock Bund', tag: 'Photo · Night', desc: 'ถ่ายรูปชมบรรยากาศยามค่ำคืนที่ The Bund (ทานมื้อเย็นที่ Nanjing Road 20:20 – 21:20 ก่อนเดินมา) แล้วเดินกลับที่พัก 22:30', images: list('bundview', 1, 4) }
+      { id: 'd2e', time: '15:00 – 15:10', title: 'The Bund Sightseeing Tunnel', tag: 'Transport · Photo', desc: 'นั่งรถไฟลอดอุโมงค์ข้ามแม่น้ำ ชมแสงสีระหว่างทาง เพื่อข้ามไปฝั่งหอไข่มุก', images: P('d2e') },
+      { id: 'd2f', time: '15:10 – 19:00', title: 'Mingzhu Roundabout', tag: 'Photo · Shopping', desc: 'เดินเที่ยวและช้อปปิ้งรอบๆ หอไข่มุก วงเวียนลอยฟ้าจุดถ่ายรูปยอดนิยม', images: P('d2f') },
+      { id: 'd2g', time: '19:00 – 20:00', title: 'Lujiazui', tag: 'Photo', desc: 'เดินเล่นถ่ายรูปวิวตึกสูง และถ่ายรูปที่บันไดเลื่อนวงแหวน Lujiazui', images: P('d2g') },
+      { id: 'd2h', time: '21:30 – 22:30', title: 'The Bund Viewpoint & Rock Bund', tag: 'Photo · Night', desc: 'ถ่ายรูปชมบรรยากาศยามค่ำคืนที่ The Bund (ทานมื้อเย็นที่ Nanjing Road 20:20 – 21:20 ก่อนเดินมา) แล้วเดินกลับที่พัก 22:30', images: P('d2h') }
     ],
     day4: [
-      { id: 'd4a', time: '09:40 – 11:00', title: "Jing'an Temple", tag: 'Temple', desc: 'วัดพุทธเก่าแก่กลางเมือง สถาปัตยกรรมทองอร่ามสวยงาม (ลงรถไฟ Line 12 ทางออก 2)', images: list('jingan_temple', 1, 4) },
-      { id: 'd4b', time: '11:25 – 13:00', title: "Jing'an Sculpture Park", tag: 'Park · Photo', desc: 'สวนสาธารณะกลางเมือง มีงานประติมากรรมให้เดินชมถ่ายรูป', images: list('jingan_sculpture', 1, 4) },
-      { id: 'd4c', time: '13:15 – 14:30', title: 'West Nanjing Road', tag: 'Eating · Photo', desc: 'ถนนช้อปปิ้งสายหลัก เต็มไปด้วยห้างและร้านแบรนด์เนม แวะทานมื้อกลางวัน', images: list('west_nanjing', 1, 4) },
-      { id: 'd4d', time: '14:40 – 16:40', title: '1000Trees', tag: 'Landmark · Photo', desc: 'แลนด์มาร์คสถาปัตยกรรมต้นไม้พันต้น จุดถ่ายรูปสุดฮิต (Line 13 ลง Jiangning Road ทางออก 1)', images: list('trees1000', 1, 4) },
-      { id: 'd4e', time: '17:35 – 18:20', title: 'Yanzhong Square Park', tag: 'Park', desc: 'สวนสาธารณะสีเขียวใจกลางเมือง เหมาะเดินพักผ่อนช่วงเย็น', images: list('yanzhong_park', 1, 4) },
+      { id: 'd4a', time: '09:40 – 11:00', title: "Jing'an Temple", tag: 'Temple', desc: 'วัดพุทธเก่าแก่กลางเมือง สถาปัตยกรรมทองอร่ามสวยงาม (ลงรถไฟ Line 12 ทางออก 2)', images: P('d4a') },
+      { id: 'd4b', time: '11:25 – 13:00', title: "Jing'an Sculpture Park", tag: 'Park · Photo', desc: 'สวนสาธารณะกลางเมือง มีงานประติมากรรมให้เดินชมถ่ายรูป', images: P('d4b') },
+      { id: 'd4c', time: '13:15 – 14:30', title: 'West Nanjing Road', tag: 'Eating · Photo', desc: 'ถนนช้อปปิ้งสายหลัก เต็มไปด้วยห้างและร้านแบรนด์เนม แวะทานมื้อกลางวัน', images: P('d4c') },
+      { id: 'd4d', time: '14:40 – 16:40', title: '1000Trees', tag: 'Landmark · Photo', desc: 'แลนด์มาร์คสถาปัตยกรรมต้นไม้พันต้น จุดถ่ายรูปสุดฮิต (Line 13 ลง Jiangning Road ทางออก 1)', images: P('d4d') },
+      { id: 'd4e', time: '17:35 – 18:20', title: 'Yanzhong Square Park', tag: 'Park', desc: 'สวนสาธารณะสีเขียวใจกลางเมือง เหมาะเดินพักผ่อนช่วงเย็น', images: P('d4e') },
       { id: 'd4f', time: '18:20 – 20:30', title: 'Nanjing Road', tag: 'Photo · Dinner', desc: 'เดินเล่นถ่ายรูปถนนนานกิงยามเย็น และทานมื้อเย็นช่วง 19:00 – 20:30', images: NANJING },
-      { id: 'd4g', time: '20:40 – 22:40', title: 'Christkindlmarkt @ YiFeng Galleria', tag: 'Market · Night', desc: 'ตลาดคริสต์มาสสไตล์ยุโรปริมเดอะบันด์ บรรยากาศอบอุ่นยามค่ำคืน แล้วกลับที่พัก', images: list('christmarkt', 1, 4) }
+      { id: 'd4g', time: '20:40 – 22:40', title: 'Christkindlmarkt @ YiFeng Galleria', tag: 'Market · Night', desc: 'ตลาดคริสต์มาสสไตล์ยุโรปริมเดอะบันด์ บรรยากาศอบอุ่นยามค่ำคืน แล้วกลับที่พัก', images: P('d4g') }
     ],
     day5: [
-      { id: 'd5a', time: 'Hangzhou', title: 'Jixian Pavilion', tag: 'Viewpoint', desc: 'ศาลาชมวิวริมทะเลสาบตะวันตก บรรยากาศร่มรื่น', images: list('jixian', 1, 2) },
-      { id: 'd5b', time: 'Hangzhou', title: 'Willow Waves at Liu Lang', tag: 'Top 10 West Lake', desc: 'หนึ่งใน 10 วิวเด็ดของทะเลสาบตะวันตก ต้นหลิวริมน้ำพลิ้วตามลม', images: list('willow', 1, 3) },
-      { id: 'd5c', time: 'Hangzhou', title: 'Leifeng Pagoda', tag: 'Landmark', desc: 'เจดีย์เลเฟิง แลนด์มาร์คชื่อดังริมทะเลสาบตะวันตก ขึ้นไปชมวิวมุมสูงได้', images: list('leifeng', 1, 3) },
-      { id: 'd5d', time: 'Hangzhou', title: 'Viewing Fish at Flower Harbor', tag: 'Top 10 West Lake', desc: 'สวนชมปลาและดอกไม้ หนึ่งใน 10 วิวเด็ดของทะเลสาบตะวันตก', images: list('viewfish', 1, 3) },
-      { id: 'd5e', time: 'Hangzhou', title: 'Xiling Bridge', tag: 'Photo', desc: 'สะพานโบราณ จุดถ่ายรูปริมทะเลสาบตะวันตก', images: list('xiling', 1, 2) },
-      { id: 'd5f', time: 'Hangzhou', title: 'Autumn Moon on a Calm Lake', tag: 'Top 10 West Lake', desc: 'จุดชมวิวพระจันทร์เหนือทะเลสาบ หนึ่งใน 10 วิวเด็ดของ West Lake', images: list('autumnmoon', 1, 3) },
-      { id: 'd5g', time: 'Hangzhou', title: 'Broken Bridge', tag: 'Landmark', desc: 'สะพานหักชื่อดังจากตำนานรักนางพญางูขาว จุดถ่ายรูปคู่กับ Leifeng Pagoda', images: list('brokenbridge', 1, 3) },
-      { id: 'd5h', time: 'Hangzhou', title: 'Hangzhou Tower', tag: 'Shopping · View', desc: 'ห้าง/หอคอยชมวิวเมืองหางโจวและทะเลสาบตะวันตก', images: list('hangzhoutower', 1, 4) },
-      { id: 'd5i', time: 'Hangzhou', title: 'City Balcony', tag: 'Night View', desc: 'จุดชมวิวแม่น้ำเฉียนถางยามค่ำคืน ตึกสูงเปิดไฟสวยงาม', images: list('citybalcony', 1, 3) }
+      { id: 'd5a', time: 'Hangzhou', title: 'Jixian Pavilion', tag: 'Viewpoint', desc: 'ศาลาชมวิวริมทะเลสาบตะวันตก บรรยากาศร่มรื่น', images: P('d5a') },
+      { id: 'd5b', time: 'Hangzhou', title: 'Willow Waves at Liu Lang', tag: 'Top 10 West Lake', desc: 'หนึ่งใน 10 วิวเด็ดของทะเลสาบตะวันตก ต้นหลิวริมน้ำพลิ้วตามลม', images: P('d5b') },
+      { id: 'd5c', time: 'Hangzhou', title: 'Leifeng Pagoda', tag: 'Landmark', desc: 'เจดีย์เลเฟิง แลนด์มาร์คชื่อดังริมทะเลสาบตะวันตก ขึ้นไปชมวิวมุมสูงได้', images: P('d5c') },
+      { id: 'd5d', time: 'Hangzhou', title: 'Viewing Fish at Flower Harbor', tag: 'Top 10 West Lake', desc: 'สวนชมปลาและดอกไม้ หนึ่งใน 10 วิวเด็ดของทะเลสาบตะวันตก', images: P('d5d') },
+      { id: 'd5e', time: 'Hangzhou', title: 'Xiling Bridge', tag: 'Photo', desc: 'สะพานโบราณ จุดถ่ายรูปริมทะเลสาบตะวันตก', images: P('d5e') },
+      { id: 'd5f', time: 'Hangzhou', title: 'Autumn Moon on a Calm Lake', tag: 'Top 10 West Lake', desc: 'จุดชมวิวพระจันทร์เหนือทะเลสาบ หนึ่งใน 10 วิวเด็ดของ West Lake', images: P('d5f') },
+      { id: 'd5g', time: 'Hangzhou', title: 'Broken Bridge', tag: 'Landmark', desc: 'สะพานหักชื่อดังจากตำนานรักนางพญางูขาว จุดถ่ายรูปคู่กับ Leifeng Pagoda', images: P('d5g') },
+      { id: 'd5h', time: 'Hangzhou', title: 'Hangzhou Tower', tag: 'Shopping · View', desc: 'ห้าง/หอคอยชมวิวเมืองหางโจวและทะเลสาบตะวันตก', images: P('d5h') },
+      { id: 'd5i', time: 'Hangzhou', title: 'City Balcony', tag: 'Night View', desc: 'จุดชมวิวแม่น้ำเฉียนถางยามค่ำคืน ตึกสูงเปิดไฟสวยงาม', images: P('d5i') }
     ],
     day6: [
-      { id: 'd6a', time: '10:10 – 11:10', title: 'Wukang Mansion & Road', tag: 'Photo · Landmark', desc: 'ตึกเรือสไตล์ Art Deco ขึ้นชื่อ จุดถ่ายรูปยอดนิยมของเซี่ยงไฮ้ (Line 10 ลง Jiaotong University ทางออก 7)', images: list('wukang', 1, 4) },
-      { id: 'd6b', time: '11:35 – 12:30', title: 'YONEX Power (Wan Ti Hui Store)', tag: 'Shopping', desc: 'ร้าน YONEX สาขา Wan Ti Hui เขต Xujiahui (Line 11 ลง Shanghai Swimming Pool ทางออก 3)', images: list('yonex_power', 1, 4) },
-      { id: 'd6c', time: '13:00 – 14:30', title: 'Anfu Road (13De Marzo cafe)', tag: 'Cafe · Eating', desc: 'ถนนสายคาเฟ่สวย แวะร้าน 13De Marzo คาเฟ่ชื่อดัง (Line 1 ลง Changshu Road ทางออก 8)', images: list('anfu_road', 1, 4) },
-      { id: 'd6d', time: '14:30 – 15:00', title: 'Wiggles wiggles', tag: 'Shopping · Photo', desc: 'ร้านสไตล์น่ารัก แวะเดินเล่นช้อปปิ้งเบาๆ ย่าน Anfu Road', images: list('wiggles', 1, 4) },
+      { id: 'd6a', time: '10:10 – 11:10', title: 'Wukang Mansion & Road', tag: 'Photo · Landmark', desc: 'ตึกเรือสไตล์ Art Deco ขึ้นชื่อ จุดถ่ายรูปยอดนิยมของเซี่ยงไฮ้ (Line 10 ลง Jiaotong University ทางออก 7)', images: P('d6a') },
+      { id: 'd6b', time: '11:35 – 12:30', title: 'YONEX Power (Wan Ti Hui Store)', tag: 'Shopping', desc: 'ร้าน YONEX สาขา Wan Ti Hui เขต Xujiahui (Line 11 ลง Shanghai Swimming Pool ทางออก 3)', images: P('d6b') },
+      { id: 'd6c', time: '13:00 – 14:30', title: 'Anfu Road (13De Marzo cafe)', tag: 'Cafe · Eating', desc: 'ถนนสายคาเฟ่สวย แวะร้าน 13De Marzo คาเฟ่ชื่อดัง (Line 1 ลง Changshu Road ทางออก 8)', images: P('d6c') },
+      { id: 'd6d', time: '14:30 – 15:00', title: 'Wiggles wiggles', tag: 'Shopping · Photo', desc: 'ร้านสไตล์น่ารัก แวะเดินเล่นช้อปปิ้งเบาๆ ย่าน Anfu Road', images: P('d6d') },
       { id: 'd6e', time: '15:40 – 18:00', title: 'Shanghai Xintiandi (Madang Road)', tag: 'Photo · Shopping', desc: 'NY Bagelous Museum · Ace Studio (ร้านเทนนิส) เดินถ่ายรูปย่านตึกเก่าสไตล์ Shikumen', images: XINTIANDI },
-      { id: 'd6f', time: '18:30 – 19:30', title: 'YONEX (巴黎春天百货淮海店)', tag: 'Shopping', desc: 'โชว์รูม YONEX สาขาถนน Huaihai ในห้าง Printemps', images: list('yonex_shop', 1, 3) },
+      { id: 'd6f', time: '18:30 – 19:30', title: 'YONEX (巴黎春天百货淮海店)', tag: 'Shopping', desc: 'โชว์รูม YONEX สาขาถนน Huaihai ในห้าง Printemps', images: P('d6f') },
       { id: 'd6g', time: '20:00 – 22:00', title: 'Yuyuan Garden (上海豫园)', tag: 'Eating · Shopping', desc: 'สวนจีนโบราณ ชมสถาปัตยกรรมยามค่ำ ชิมของกิน และช้อปของที่ระลึก แล้วกลับที่พัก', images: YUYUAN }
     ]
   };
 
   var TIERS = [
     { id: 't1', num: 1, label: 'Tier 1', rides: [
-      { name: 'TRON Lightcycle Power Run', images: list('dl_tron', 1, 2) },
-      { name: 'Zootopia Hot Pursuit', images: list('dl_zootopia', 1, 2) },
-      { name: 'Pirates of the Caribbean: Battle for the Sunken Treasure', images: list('dl_pirates', 1, 2) },
-      { name: 'Seven Dwarfs Mine Train', images: list('dl_sevendwarfs', 1, 3) },
-      { name: 'Enchanted Storybook Castle', images: list('dl_storybook', 1, 2) }
+      { name: 'TRON Lightcycle Power Run', images: P('ride_tron') },
+      { name: 'Zootopia Hot Pursuit', images: P('ride_zootopia') },
+      { name: 'Pirates of the Caribbean: Battle for the Sunken Treasure', images: P('ride_pirates') },
+      { name: 'Seven Dwarfs Mine Train', images: P('ride_sevendwarfs') },
+      { name: 'Enchanted Storybook Castle', images: P('ride_storybook') }
     ] },
     { id: 't2', num: 2, label: 'Tier 2', rides: [
-      { name: 'Roaring Rapids (Wet)', images: list('dl_roaring', 1, 3) },
-      { name: 'Soaring Over the Horizon', images: list('dl_soaring', 1, 2) },
-      { name: 'Buzz Lightyear Planet Rescue', images: list('dl_buzz', 1, 2) },
-      { name: 'The Many Adventures of Winnie the Pooh', images: list('dl_winnie', 1, 2) },
-      { name: 'Jet Packs', images: list('dl_jetpacks', 1, 2) },
-      { name: "Peter Pan's Flight", images: list('dl_peterpan', 1, 2) }
+      { name: 'Roaring Rapids (Wet)', images: P('ride_roaring') },
+      { name: 'Soaring Over the Horizon', images: P('ride_soaring') },
+      { name: 'Buzz Lightyear Planet Rescue', images: P('ride_buzz') },
+      { name: 'The Many Adventures of Winnie the Pooh', images: P('ride_winnie') },
+      { name: 'Jet Packs', images: P('ride_jetpacks') },
+      { name: "Peter Pan's Flight", images: P('ride_peterpan') }
     ] },
     { id: 't3', num: 3, label: 'Tier 3', rides: [
-      { name: 'Dumbo the Flying Elephant', images: list('dl_dumbo', 1, 2) },
-      { name: 'Hunny Pot Spin', images: list('dl_hunnypot', 1, 2) },
-      { name: "Woody's Roundup", images: list('dl_woody', 1, 2) },
-      { name: 'Alice in Wonderland Maze', images: list('dl_alice', 1, 2) }
+      { name: 'Dumbo the Flying Elephant', images: P('ride_dumbo') },
+      { name: 'Hunny Pot Spin', images: P('ride_hunnypot') },
+      { name: "Woody's Roundup", images: P('ride_woody') },
+      { name: 'Alice in Wonderland Maze', images: P('ride_alice') }
     ] },
     { id: 't4', num: 4, label: 'Tier 4', rides: [
-      { name: 'Fantasia Carousel', images: list('dl_fantasia', 1, 2) },
-      { name: 'Voyage to the Crystal Grotto', images: list('dl_voyage', 1, 2) },
-      { name: 'Explorer Canoes', images: list('dl_canoes', 1, 2) },
-      { name: 'Slinky Dog Spin', images: list('dl_slinky', 1, 2) }
+      { name: 'Fantasia Carousel', images: P('ride_fantasia') },
+      { name: 'Voyage to the Crystal Grotto', images: P('ride_voyage') },
+      { name: 'Explorer Canoes', images: P('ride_canoes') },
+      { name: 'Slinky Dog Spin', images: P('ride_slinky') }
     ] }
   ];
 
   var R = function (id, days, title, loc, hl, rating, slug, n) {
-    return { id: id, days: days, title: title, location: loc, hl: hl, rating: rating, images: list('r_' + slug, 1, n) };
+    return { id: id, days: days, title: title, location: loc, hl: hl, rating: rating, images: P(id) };
   };
   var RESTAURANTS = [
     R('rs1', ['Day 2'], 'Lai laizianlong', 'Nanjing Road', 'เสี่ยวหลงเปา', '⭐⭐⭐⭐⭐', 'lai_lai_xianlong', 3),
@@ -404,12 +407,12 @@
   ];
 
   var SPARES = [
-    { id: 'sp1', days: ['Day 2'], title: 'Gongqing Forest Park', location: 'Yangpu District ริมแม่น้ำหวงผู่ · ห่างจาก North Bund ขึ้นเหนือ ~5-6 กม.', hl: 'รถไฟไอน้ำวิ่งรอบสวน · พายเรือที่ทะเลสาบ Yinghu · ถนนต้นแปะก๊วย (Ginkgo Avenue) และดงเมตาเซควอยา ช่วงใบไม้เปลี่ยนสีสวยมาก · งานเทศกาลเบญจมาศใบไม้ร่วง', images: list('sp_gongqing_forest_park', 1, 3) },
-    { id: 'sp2', days: ['Day 4'], title: 'Zhang Yuan', location: 'West Nanjing Road', hl: 'ตรอก Shikumen เก่า มีร้านกาแฟ/ร้านอาหารแนวสไตล์', images: list('sp_zhang_yuan', 1, 3) },
-    { id: 'sp3', days: ['Day 4'], title: 'The Louis Shanghai', location: 'HKRI Taikoo Hui, No. 789 West Nanjing Road (ติด Wujiang Road)', hl: 'อาคารทรงเรือของ Louis Vuitton ออกแบบโดย OMA ภายในเป็นนิทรรศการ Visionary Journeys + Trunkscape (อุโมงค์กระเป๋าเดินทางลอยฟ้า) มีคาเฟ่ Le Café Louis Vuitton ชั้น 3 · เข้าชมฟรีแต่ต้องจองผ่าน WeChat · เปิด 10:00-22:00', images: list('sp_the_louis_shanghai', 1, 3) },
-    { id: 'sp4', days: ['Day 6'], title: 'Longhua Temple', location: '2853 Longhua Road, Xuhui District (Metro สาย 11/12 ลง Longhua หรือ Longcao Road)', hl: 'เจดีย์ Longhua Pagoda สูง 40.4 ม. สไตล์ซ่ง 7 ชั้น · หอระฆังทองแดง 5 ตัน · หมู่โบสถ์วัดแบบจีนดั้งเดิม (วิหารพระศรีอริยเมตไตรย, พระอุโบสถหลัก)', images: list('sp_longhua_temple', 1, 3) },
-    { id: 'sp5', days: ['Day 6'], title: 'St. Ignatius Cathedral', location: 'Xujiahui, Xuhui District — ติดกับ Library Xujiahui', hl: 'โบสถ์กอทิกสีแดงอิฐ หอระฆังคู่ หนึ่งในโบสถ์คาทอลิกที่ใหญ่ที่สุดในเซี่ยงไฮ้ ลานหน้าโบสถ์เป็นจุดถ่ายรูป/พรีเวดดิ้งที่นิยม', images: list('sp_st_ignatius_cathedral', 1, 3) },
-    { id: 'sp6', days: ['Day 6'], title: 'Library Xujiahui', location: 'Xujiahui, Xuhui District — ติดกับ St. Ignatius Cathedral', hl: 'ห้องสมุดเก่าสถาปัตยกรรมยุโรป เก็บหนังสือ/หนังสือพิมพ์เก่าหลายภาษา (อังกฤษ ฝรั่งเศส เยอรมัน รัสเซีย) บรรยากาศไม้เข้มและโคมระย้าทองเหลือง มีระเบียงชมวิว', images: list('sp_library_xujiahui', 1, 3) }
+    { id: 'sp1', days: ['Day 2'], title: 'Gongqing Forest Park', location: 'Yangpu District ริมแม่น้ำหวงผู่ · ห่างจาก North Bund ขึ้นเหนือ ~5-6 กม.', hl: 'รถไฟไอน้ำวิ่งรอบสวน · พายเรือที่ทะเลสาบ Yinghu · ถนนต้นแปะก๊วย (Ginkgo Avenue) และดงเมตาเซควอยา ช่วงใบไม้เปลี่ยนสีสวยมาก · งานเทศกาลเบญจมาศใบไม้ร่วง', images: P('sp1') },
+    { id: 'sp2', days: ['Day 4'], title: 'Zhang Yuan', location: 'West Nanjing Road', hl: 'ตรอก Shikumen เก่า มีร้านกาแฟ/ร้านอาหารแนวสไตล์', images: P('sp2') },
+    { id: 'sp3', days: ['Day 4'], title: 'The Louis Shanghai', location: 'HKRI Taikoo Hui, No. 789 West Nanjing Road (ติด Wujiang Road)', hl: 'อาคารทรงเรือของ Louis Vuitton ออกแบบโดย OMA ภายในเป็นนิทรรศการ Visionary Journeys + Trunkscape (อุโมงค์กระเป๋าเดินทางลอยฟ้า) มีคาเฟ่ Le Café Louis Vuitton ชั้น 3 · เข้าชมฟรีแต่ต้องจองผ่าน WeChat · เปิด 10:00-22:00', images: P('sp3') },
+    { id: 'sp4', days: ['Day 6'], title: 'Longhua Temple', location: '2853 Longhua Road, Xuhui District (Metro สาย 11/12 ลง Longhua หรือ Longcao Road)', hl: 'เจดีย์ Longhua Pagoda สูง 40.4 ม. สไตล์ซ่ง 7 ชั้น · หอระฆังทองแดง 5 ตัน · หมู่โบสถ์วัดแบบจีนดั้งเดิม (วิหารพระศรีอริยเมตไตรย, พระอุโบสถหลัก)', images: P('sp4') },
+    { id: 'sp5', days: ['Day 6'], title: 'St. Ignatius Cathedral', location: 'Xujiahui, Xuhui District — ติดกับ Library Xujiahui', hl: 'โบสถ์กอทิกสีแดงอิฐ หอระฆังคู่ หนึ่งในโบสถ์คาทอลิกที่ใหญ่ที่สุดในเซี่ยงไฮ้ ลานหน้าโบสถ์เป็นจุดถ่ายรูป/พรีเวดดิ้งที่นิยม', images: P('sp5') },
+    { id: 'sp6', days: ['Day 6'], title: 'Library Xujiahui', location: 'Xujiahui, Xuhui District — ติดกับ St. Ignatius Cathedral', hl: 'ห้องสมุดเก่าสถาปัตยกรรมยุโรป เก็บหนังสือ/หนังสือพิมพ์เก่าหลายภาษา (อังกฤษ ฝรั่งเศส เยอรมัน รัสเซีย) บรรยากาศไม้เข้มและโคมระย้าทองเหลือง มีระเบียงชมวิว', images: P('sp6') }
   ];
 
   var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
@@ -454,6 +457,7 @@
   }
 
   function renderStatic() {
+    document.getElementById('heroCar').innerHTML = carousel('hero', COVER, 400, '');
     document.getElementById('hl').innerHTML = HIGHLIGHTS.map(function (h) {
       return '<div style="flex:0 0 auto;width:172px;height:114px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 14px rgba(86,52,27,.12);">' +
         '<img src="' + h.img + '" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">' +
@@ -484,12 +488,12 @@
     var html = '';
     if (state.day === 'day1') {
       html = '<div style="padding:0 20px;"><div class="card">' +
-        carousel('d1', HOTEL.slice(0, 4), 190, '') +
+        carousel('d1', HOTEL, 190, '') +
         '<div style="padding:14px 16px 18px;"><h3 class="title">Jinjiang Inn — Check-in</h3>' +
         '<p class="desc">เดินทางจากกรุงเทพฯ ถึงเซี่ยงไฮ้ช่วงค่ำ (MU8644 · PVG 22:10) เข้าที่พัก Jinjiang Inn เพื่อพักผ่อน เช็คอินได้หลัง 14:00</p></div></div></div>';
     } else if (state.day === 'day3') {
       var banner = '<div style="border-radius:18px;overflow:hidden;position:relative;">' +
-        carousel('d3b', [IMG('dl_banner_1'), IMG('dl_banner_2'), IMG('dl_banner_3'), IMG('dl_storybook_1')], 185,
+        carousel('d3b', P('dlbanner'), 185,
           '<div style="position:absolute;left:0;right:0;bottom:0;height:92px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(25,13,7,.8) 100%);pointer-events:none;"></div>' +
           '<div style="position:absolute;left:14px;bottom:12px;color:#fff;pointer-events:none;">' +
           '<div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;">4 Dec 2026</div>' +
@@ -514,14 +518,14 @@
       html = '<div style="padding:0 20px;" class="stack">' + banner + tiers + '</div>';
     } else if (state.day === 'day7') {
       html = '<div style="padding:0 20px;"><div class="card">' +
-        carousel('d7', [IMG('day6_comeback_1')].concat(FLIGHT), 175, '') +
+        carousel('d7', P('d6back').concat(FLIGHT), 175, '') +
         '<div style="padding:14px 16px 18px;"><h3 class="title">Back to Thailand</h3>' +
         '<p class="desc">เช็คเอาท์ก่อน 12:00 เดินทางสู่สนามบิน Pudong เที่ยวบิน MU8643 · PVG 12:00 → BKK 15:55</p></div></div></div>';
     } else {
       var pre = '';
       if (state.day === 'day5') {
         pre = '<div style="padding:0 20px 14px;"><div style="border-radius:18px;overflow:hidden;position:relative;height:150px;">' +
-          '<img src="' + IMG('brokenbridge_2') + '" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">' +
+          '<img src="' + P('d5g')[1] + '" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">' +
           '<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(25,13,7,.75) 100%);"></div>' +
           '<div style="position:absolute;left:14px;bottom:12px;color:#fff;">' +
           '<div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;">6 Dec 2026</div>' +
